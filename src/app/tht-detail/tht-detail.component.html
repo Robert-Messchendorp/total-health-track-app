@@ -1,0 +1,9 @@
+<p>{{recipe.name}}</p>
+<p>{{recipe.recipename}}</p>
+
+<md-list>
+    <md-list-item *ngFor="let ingredient of ingredients" class="detail-ingredient-list">
+        <p md-line>{{ingredient.name}}&nbsp; ({{ingredient.amount}})</p>
+        <md-icon md-list-icon (click)="onAddItemToShoppingList(ingredient)">add_circle_outline</md-icon>
+    </md-list-item>
+</md-list>

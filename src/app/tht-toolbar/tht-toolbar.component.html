@@ -1,0 +1,13 @@
+<div class="tht-toolbar">
+  <md-toolbar color='primary' >
+      <span>Total Health Track</span>
+      <span class="example-fill-remaining-space"></span>
+      <button md-icon-button color="accent" *ngIf="loggedIn()">
+        <md-icon aria-label="Go to profile by clicking on this button">face</md-icon>
+      </button>
+      <tht-logout></tht-logout>
+      <button type="button" md-button (click)="openSidenav()" *ngIf="loggedIn()">
+        <md-icon>menu</md-icon>
+      </button>
+  </md-toolbar>
+</div>

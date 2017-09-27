@@ -1,0 +1,23 @@
+  <div class="entity-container"
+        fxLayout
+        fxLayout.xs="column"
+        fxLayoutAlign="center"
+        fxLayoutGap="10px"
+        fxLayoutGap.xs="0">
+    <div class="list-overview" fxFlex fxFlexOffset="50px"  fxFlexOffset.xs="0">
+        <tht-list [listRecord]="record"></tht-list>
+    </div>
+    <div class="detail-overview" fxFlex="500px" *ngIf="entity === 'recipes'">
+      <tht-detail *ngIf = "selectedRecord; else infoText"
+                  [recipe] = "selectedRecord"></tht-detail>
+      <ng-template #infoText>
+        <p>Please select a record</p>
+      </ng-template>
+    </div>
+  </div>
+  <div class="add-record-dialogue-area">
+    <tht-add-record-dialogue (recordCreated)="onRecordCreated($event)" ></tht-add-record-dialogue>
+  </div>
+  <div class="shopping-list-container">
+    <tht-information-card></tht-information-card>
+  </div>

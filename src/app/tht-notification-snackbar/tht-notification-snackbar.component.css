@@ -1,0 +1,20 @@
+.error-title {
+    color: rgba(255, 51, 0, 0.75);
+}
+
+.success-title {
+    color: rgba(0, 128, 0, 0.95);
+}
+
+.error-message, .success-message {
+    color: #fff;
+}
+
+.error-notification, .success-notification {
+    background: #323232;
+    padding: 5%;
+}
+
+.mat-snack-bar-container.ng-tns-c18-9.ng-trigger.ng-trigger-state.mat-snack-bar-center {
+    background: rgba(255, 0, 0, 0.68);
+}

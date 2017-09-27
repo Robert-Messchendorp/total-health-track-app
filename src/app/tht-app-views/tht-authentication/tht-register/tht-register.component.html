@@ -1,0 +1,16 @@
+<form class="tht-register-form" (ngSubmit)="onRegister(registerForm)" #registerForm="ngForm">
+    <md-form-field class="input-container">
+     <input mdInput placeholder="Please enter your first name" type="text" required ngModel name="first_name">
+   </md-form-field>
+   <md-form-field class="input-container">
+     <input mdInput placeholder="Please enter your last name" type="text" required ngModel name="last_name">
+   </md-form-field>
+   <md-form-field class="input-container">
+     <input mdInput placeholder="Please enter your email" type="email" required ngModel name="email">
+   </md-form-field>
+   <md-form-field class="input-container">
+     <input mdInput placeholder="Please enter your password" type="password" required ngModel name="password">
+   </md-form-field>
+   <br/>
+   <button md-button md-raised-button [color]="accent" type="submit" class="register-button" [disabled]="!registerForm.valid">Register</button>
+ </form>

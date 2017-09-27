@@ -1,0 +1,18 @@
+<div class="shopping-list">
+  <md-card class="information-card">
+    <md-card-header>
+      <md-card-title> Shopping list </md-card-title>
+    </md-card-header>
+    <md-card-content>
+      <md-card-subtitle>Items selected</md-card-subtitle>
+      <ul class="simple-list">
+        <li class="example-for-add" *ngFor="let ingredientOnShoppingList of ingredientsOnShoppingList">{{ingredientOnShoppingList.name}}&nbsp; ({{ingredientsOnShoppingList.amount}})
+        </li>
+      </ul>
+    </md-card-content>
+    <md-card-actions align="end">
+      <button md-raised-button>Save</button>
+      <button md-raised-button>Buy online</button>
+    </md-card-actions>
+  </md-card>
+</div>

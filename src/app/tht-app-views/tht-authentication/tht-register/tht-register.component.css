@@ -1,0 +1,13 @@
+.tht-register-form, .input-container {
+    display: block;
+    padding: 25px;
+}
+
+.register-button {
+    margin: 25px;
+    margin-top: 10px;
+}
+
+.input-container.ng-invalid.ng-touched {
+    /* border: 1px solid red; */
+}

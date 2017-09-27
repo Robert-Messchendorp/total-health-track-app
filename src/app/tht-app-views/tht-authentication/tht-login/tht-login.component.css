@@ -1,0 +1,9 @@
+.tht-login-form, .input-container {
+    display: block;
+    padding: 25px;
+}
+
+.login-button {
+    margin: 25px;
+    margin-top: 10px;
+}

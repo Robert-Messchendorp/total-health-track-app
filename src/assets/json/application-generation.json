@@ -1,0 +1,235 @@
+{
+    "Navigation": [
+        {
+            "Id": "{43f28032-ca95-4bd4-934c-bc3416ce174d}",
+            "DisplayName": "Food",
+            "Entity": "Food",
+            "Icon": "",
+            "SubEntities": [
+                {
+                    "Id": "{51706c68-3385-4fd9-a069-986f8c7ebf05}",
+                    "DisplayName": "Recipes",
+                    "Router": "/recipes",
+                    "InputCard": {
+                        "Id": "{c87600e6-21d7-4ff4-8fc3-7e205732d5fb}",
+                        "CardTitle": "Add your recipe",
+                        "CardSubTitle": "Please submit your recipe details",
+                        "Controls": [
+                            {
+                                "Id": "{be5e5eeb-c94a-445a-abab-fc073d7af56f}",
+                                "DisplayName": "Recipe name",
+                                "ModelName": "recipe_name",
+                                "ControlType": "InputFieldControl",
+                                "Options": null,
+                                "Placeholder": "Please enter the name of your recipe",
+                                "ToolTip": null,
+                                "RequiredLevel": true
+                            },
+                            {
+                                "Id": "{b0441b89-b696-4a0c-943d-7294f3b04f3e}",
+                                "DisplayName": "Category",
+                                "ModelName": "category",
+                                "ControlType": "CheckBoxControl",
+                                "Options": [
+                                    {
+                                        "key": 1,
+                                        "value": "AGV"
+                                    },
+                                    {
+                                        "key": 2,
+                                        "value": "Pastafari"
+                                    },
+                                    {
+                                        "key": 3,
+                                        "value": "Meat lovers"
+                                    },
+                                    {
+                                        "key": 4,
+                                        "value": "Salad lovers"
+                                    }
+                                ],
+                                "Placeholder": null,
+                                "ToolTip": "Check the categories that are applicable to your recipe",
+                                "RequiredLevel": false
+                            },
+                            {
+                                "Id": "{ebe5add3-263b-44c3-9ae2-702d3575efd6}",
+                                "DisplayName": "Ingredients",
+                                "ModelName": "ingredients",
+                                "ControlType": "ChipControl",
+                                "Options": null,
+                                "Placeholder": "",
+                                "ToolTip": "Add the ingredients necessary for your recipe",
+                                "RequiredLevel": false,
+                                "Visible": true,
+                                "ShowLabel": true,
+                                "Disabled": false
+                            },
+                            {
+                                "Id": "{87f1c61d-11ac-4fcb-9e76-2a6e0dc33252}",
+                                "DisplayName": "Preperation",
+                                "ModelName": "preperation",
+                                "ControlType": "TextAreaControl",
+                                "Options": null,
+                                "Placeholder": "Please enter the steps of preperation for your recipe",
+                                "ToolTip": "Prefered format:    Step 1: some dummy text [enter] Step 2: some more dummy text",
+                                "RequiredLevel": false,
+                                "Visible": true,
+                                "ShowLabel": true,
+                                "Disabled": false
+                            },
+                            {
+                                "Id": "{7ded6f32-0bf7-4369-bf08-00d6f4a0a6c8}",
+                                "DisplayName": "Preperation time",
+                                "ModelName": "preperation_time",
+                                "ControlType": "NumberControl",
+                                "Options": null,
+                                "Placeholder": null,
+                                "ToolTip": "Please enter the time it costs to make your recipe [hh:mm]",
+                                "RequiredLevel": false,
+                                "Visible": true,
+                                "ShowLabel": true,
+                                "Disabled": false
+                            },
+                            {
+                                "Id": "{317aa11d-b611-4eef-a2d9-f09c81ee03eb}",
+                                "DisplayName": "Cost Per Person",
+                                "ModelName": "cost_p_p",
+                                "ControlType": "NumberControl",
+                                "Options": null,
+                                "Placeholder": null,
+                                "ToolTip": "Enter the costs per person",
+                                "RequiredLevel": false,
+                                "Visible": true,
+                                "ShowLabel": true,
+                                "Disabled": false
+                            }
+                        ]
+                    } 
+                },
+                {
+                    "Id": "{5501b0c9-2e23-4387-a0b6-1a7502d35d60}",
+                    "DisplayName": "Foodshufflr",
+                    "Router": "/foodshufflr"
+                }
+            ]
+        },
+        {
+            "Id": "{f560e9c1-1ba3-415b-b9aa-21927f28de73}",
+            "DisplayName": "Finance",
+            "Entity": "Finance",
+            "Router": "/finance-dashboard",
+            "Icon": "",
+            "SubEntities": [
+                {
+                    "Id": "{305b67c6-9e95-49a3-b81c-e27c180fbedd}",
+                    "DisplayName": "Investments",
+                    "Router": "/investments",
+                    "Icon": "",
+                    "SubEntityNavigation": [
+                        {
+                            "Id": "{a78ad1a3-0452-430b-a190-46fe31868fc5}",
+                            "DisplayName": "Weekly overview",
+                            "QueryParameters": "/:weekly",
+                            "Icon": ""
+                        },
+                        {
+                            "Id": "{8069f8d2-9b9c-4413-9bdf-de4c8bc99f76}",
+                            "DisplayName": "Monthly overview",
+                            "QueryParameters": "/:monthly",
+                            "Icon": ""
+                        },
+                        {
+                            "Id": "{6c08ecb4-c938-4baa-885e-da936339f3dc}",
+                            "DisplayName": "Quarterly overview",
+                            "QueryParameters": "/:quarterly",
+                            "Icon": ""
+                        },
+                        {
+                            "Id": "{cefe4d79-32ae-4a7a-8087-a2a4aeeac05e}",
+                            "DisplayName": "Semi-annual overview",
+                            "QueryParameters": "/:semi-annual",
+                            "Icon": ""
+                        },
+                        {
+                            "Id": "{2bd7d296-cde8-4494-bcae-a5b1bda3ffab}",
+                            "DisplayName": "Annual overview",
+                            "QueryParameters": "/:annual",
+                            "Icon": ""
+                        }
+                    ]
+                },
+                {
+                    "Id": "{bd6bceb1-450a-4832-bb18-65fc5f09fd7a}",
+                    "DisplayName": "Fixed Costs",
+                    "Router": "/fixed-costs",
+                    "Icon": ""
+                },
+                {
+                    "Id": "{db3b02d4-2b4e-419a-a913-89f991509f13}",
+                    "DisplayName": "Invoices",
+                    "Router": "/invoices",
+                    "Icon": ""
+                },
+                {
+                    "Id": "{8c4a9f54-ccf9-4360-8798-ad2b6bf08aa4}",
+                    "DisplayName": "Receipts",
+                    "Router": "/receipts",
+                    "Icon": ""
+                }
+            ]
+        },
+        {
+            "Id": "{201eb8dc-1323-4837-bb37-4a8f8e80f008}",
+            "DisplayName": "Body",
+            "Entity": null,
+            "Icon": "",
+            "SubEntities": [
+                {
+                    "Id": "{71424bf1-58b5-4aa8-a65b-a2b569019e27}",
+                    "DisplayName": "Mental",
+                    "Router": "/mental",
+                    "Icon": ""
+                },
+                {
+                    "Id": "{d5fc5c16-84a1-4feb-b04e-263a0811abfe}",
+                    "DisplayName": "Physical",
+                    "Router": "/physical",
+                    "Icon": "",
+                    "SubEntityNavigation": [
+                        {
+                            "Id": "{764cc208-b581-4370-9236-471aff6490c7}",
+                            "DisplayName": "Weekly progress",
+                            "QueryParameters": "/:weekly",
+                            "Icon": ""
+                        },
+                        {
+                            "Id": "{c75c2901-2c90-49d2-b13b-f1de3c9890b2}",
+                            "DisplayName": "Monthly progress",
+                            "QueryParameters": "/:monthly",
+                            "Icon": ""
+                        },
+                        {
+                            "Id": "{98f3ad6e-6caa-4de0-953f-d52a46ef3397}",
+                            "DisplayName": "Quarterly progress",
+                            "QueryParameters": "/:quarterly",
+                            "Icon": ""
+                        },
+                        {
+                            "Id": "{95057584-e80b-4198-b0a7-09bf6747a84c}",
+                            "DisplayName": "Semi-annual progress",
+                            "QueryParameters": "/:semi-annual",
+                            "Icon": ""
+                        },
+                        {
+                            "Id": "{32ebfe46-2a77-490e-97dd-b44162f622e9}",
+                            "DisplayName": "Annual progress",
+                            "QueryParameters": "/:annual",
+                            "Icon": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

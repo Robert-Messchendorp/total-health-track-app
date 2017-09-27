@@ -1,0 +1,7 @@
+.detail-ingredient-list {
+    display: block;
+}
+
+.detail-ingredient-list p, .detail-ingredient-list md-icon {
+    display: inline-block;
+}

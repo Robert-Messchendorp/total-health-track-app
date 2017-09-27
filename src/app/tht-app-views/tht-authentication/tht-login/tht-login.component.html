@@ -1,0 +1,10 @@
+<form class="tht-login-form" (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+       <md-form-field class="input-container">
+         <input mdInput placeholder="Please enter your email" type="email" required ngModel name="email">
+       </md-form-field>
+       <md-form-field class="input-container">
+         <input mdInput placeholder="Please enter your password" type="password" required ngModel name="password">
+       </md-form-field>
+       <br/>
+       <button md-button md-raised-button [color]="accent" type="submit" class="login-button" [disabled]="!loginForm.valid">Login</button>
+     </form>

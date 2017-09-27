@@ -1,0 +1,67 @@
+<!-- first example of making a list of items without any dynamic cool features -->
+<!-- <div>
+    <div>
+        <label>Add List item name</label>
+        <input type="text"
+        class="list-item-input-control"
+        [(ngModel)]="listItemName">
+    </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <button md-raised-button color="warn" (click)="onAddNewListItem()">Add list item</button>
+  <br />
+  <br />
+  <br />
+  <br />
+  <div>
+    <label>List of items</label>
+    !!!!basic example of using an *ngFor (ng-repeat in AngularJS) loop, with an index and conditional styling !!!!!
+    <ul>
+      <li *ngFor="let item of listItems; let i = index" [ngStyle]="{backgroundColor: i < 5 ? 'lightgreen' : i < 8 ? 'orange' : 'red'}">{{ item }}</li>
+    </ul>
+  </div>  
+
+</div> -->
+
+<!-- Second example of making a list of items, with a static model, so a little bit more dynamic -->
+<!-- <div>
+  <ul>
+    <li *ngFor="let item of listItems; let i = index">
+      <span class="recipe-name"> {{ item.name }}</span>
+      <span class="recipe-description"> {{ item.description }}</span>
+      <br />
+      <div class="recipe-image-container">
+        <img 
+          src ="{{item.imagePath}}"
+          alt = "{{item.name}}"
+          class="recipe-image">
+          ///alternative for src is [src] = "item.imagePath" 
+      </div>
+    </li>
+  </ul>
+</div> -->
+
+<!-- <div class="some-practice-list">
+  <ul class="practice-ul">
+    <li>{{record.name}}</li>
+    <li (click)="onSelected()">{{record.recipe_name}}</li>
+    <li>{{record.imagePath}}</li>
+  </ul>
+</div> -->
+
+<!-- Final list view is datatable or grid -list (user pick) -->
+<div class="list-view-container">
+  <span class="list-view-button-container">
+    <button md-button>
+      <md-icon>view_list</md-icon>
+    </button>
+  </span>
+  <span class="grid-list-view-button-container">
+    <button md-button-raised>
+      <md-icon>dashboard</md-icon>
+    </button>
+  </span>
+  <tht-data-table (recordSelected) = "onRecordSelected($event)"></tht-data-table>
+</div>

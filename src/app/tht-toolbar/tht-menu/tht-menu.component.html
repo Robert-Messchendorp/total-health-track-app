@@ -1,0 +1,66 @@
+<!-- Tutorial code -->
+<!-- <p>This will become the menu component</p>
+<p>The first menu item will be {{ menuItem }} and it has the following icon {{ icon }}, which will lead you to {{ getMenuContent() }}</p>
+<br/>
+<br/>
+<hr>
+<p>Here we are going to experiment with Angular Material buttons</p>
+<label>Menu item name</label> -->
+
+<!-- One way databinding  -->
+<!-- <input type="text"
+class="menu-item-input-control"
+(input)="onUpdateMenuItemName($event)"> -->
+
+<!-- Two way data binding  -->
+<!-- <input type="text"
+class="menu-item-input-control"
+[(ngModel)]="menuItemName"> -->
+<!-- <p>{{ menuItemName }}</p> -->
+
+<!-- event and property binding, and some angular material -->
+<!-- <button md-raised-button [disabled]="!allowNewMenuItem" color="warn" (click)="onAddNewMenuItem()">Add menu item</button> -->
+<!-- above you saw an example of property binding, you can bind on all html element attributes -->
+<!-- the click between parentheses signifies a click event executing a method in the typescript file -->
+<!-- theoretically you can add a class to a classList very easily in this case -->
+<!-- <p [innerText]="allowNewMenuItem"></p> -->
+<!-- <p> {{ addNewMenuItem }}</p> -->
+
+<!-- conditionally showing with help of *ngIf (true || false), can do direct check, with a method being performed to decide if true || false, or like below on some event/variable
+    that triggers the condition to be either true or false -->
+<!-- <p *ngIf="menuItemCreated; else noMenuItem">{{ addNewMenuItem }}</p> -->
+<!-- example *ngIf else condition> -->
+<!-- ng-template can be used to mark places in the DOM -->
+
+<!-- also an example of ngStyle, both syntax for using a method to determine the color or setting the color directly -->
+<!-- also added an example of ngClass, class itemNotCreaed only gets added when menuItemCreated equals false -->
+<!-- <ng-template #noMenuItem> -->
+    <!-- <p [ngStyle]="{backgroundColor: getColor()}">No menu item was created</p> -->
+    <!-- <p [ngStyle]="{'background-color': 'purple'}" [ngClass]="{itemNotCreated: menuItemCreated === false }">No menu item was created</p>
+</ng-template> -->
+<div class="tht-menu">
+    <div class="menu-header">
+    </div>
+    <md-nav-list class="menu-list">
+        <md-list-item class="tht-menu-list-item" (click)="navigateTo($event)">
+            <md-icon md-list-icon>restaurant_menu</md-icon>
+            <p class="menu-item-title">Food</p>
+            <!-- alternative ways -->
+            <!-- <p class="menu-item-title"><a routerLink="/recipes">Food</a></p> -->
+            <!-- after the slash is in case you go for recipes/singleid -->
+            <!-- <p class="menu-item-title"><a [routerLink]="[/recipes]" / "['/recipes', 'someid' ]">Food</a></p> -->
+        </md-list-item>
+        <md-list-item class="tht-menu-list-item" (click)="navigateTo($event)">
+            <md-icon md-list-icon>euro_symbol</md-icon>
+            <p class="menu-item-title">Finance</p>
+        </md-list-item>
+        <md-list-item class="tht-menu-list-item" (click)="navigateTo($event)">
+            <md-icon md-list-icon>accessibility</md-icon>
+            <p class="menu-item-title">Body</p>
+        </md-list-item>
+        <md-list-item class="tht-menu-list-item" (click)="navigateTo($event)">
+            <md-icon md-list-icon>euro_symbol</md-icon>
+            <p class="menu-item-title">playground</p>
+        </md-list-item>
+    </md-nav-list>
+</div>
