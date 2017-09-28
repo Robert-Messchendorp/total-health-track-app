@@ -139,9 +139,9 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/@angular/platform-browser/animations.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_flex_layout__ = __webpack_require__("../../../flex-layout/@angular/flex-layout.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_cdk_table__ = __webpack_require__("../../../cdk/@angular/cdk/table.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_cdk_table__ = __webpack_require__("../../../cdk/esm5/table.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__tht_toolbar_tht_menu_tht_menu_component__ = __webpack_require__("../../../../../src/app/tht-toolbar/tht-menu/tht-menu.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__tht_list_tht_list_component__ = __webpack_require__("../../../../../src/app/tht-list/tht-list.component.ts");
@@ -376,7 +376,7 @@ module.exports = "<button md-fab color=\"primary\" (click)=\"openDialog()\" clas
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ThtAddRecordDialogueComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DialogAddRecordDialog; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_notification_service__ = __webpack_require__("../../../../../src/services/notification.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_data_service__ = __webpack_require__("../../../../../src/services/data.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -799,8 +799,8 @@ module.exports = "<md-card>\n  <md-card-header>\n    <md-card-title>Playground</
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ThtPlaygroundComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__("../../../../../src/services/data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_data_management_service__ = __webpack_require__("../../../../../src/services/data-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_management_service__ = __webpack_require__("../../../../../src/services/data-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_notification_service__ = __webpack_require__("../../../../../src/services/notification.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -814,21 +814,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ThtPlaygroundComponent = (function () {
-    function ThtPlaygroundComponent(dataManagementService, dataService) {
+    function ThtPlaygroundComponent(dataManagementService, notificationService) {
         this.dataManagementService = dataManagementService;
-        this.dataService = dataService;
+        this.notificationService = notificationService;
         this.entity = 'recipes';
     }
     ThtPlaygroundComponent.prototype.ngOnInit = function () {
-        // this.dataManagementService.getControlsByEntity(this.entity); 
-        //   this.dataService.onRead('someurl')
-        //   .subscribe(
-        //     (response: Response) => {
-        //       this.controls = response.json();
-        //     },
-        //     (error) => console.log(error)
-        //   );
-        //   console.log(this.controls);
+        var _this = this;
+        this.dataManagementService.getControlsByEntity(this.entity);
+        this.notificationService.successNotificationTriggered
+            .subscribe(function (success) {
+            _this.controls = success;
+            console.log(_this.controls);
+        });
     };
     return ThtPlaygroundComponent;
 }());
@@ -837,9 +835,9 @@ ThtPlaygroundComponent = __decorate([
         selector: 'tht-playground',
         template: __webpack_require__("../../../../../src/app/tht-app-views/tht-playground/tht-playground.component.html"),
         styles: [__webpack_require__("../../../../../src/app/tht-app-views/tht-playground/tht-playground.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_2__services_data_management_service__["a" /* DataManagementService */], __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_1__services_data_management_service__["a" /* DataManagementService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_data_management_service__["a" /* DataManagementService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_data_management_service__["a" /* DataManagementService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_management_service__["a" /* DataManagementService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_management_service__["a" /* DataManagementService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_notification_service__["a" /* NotificationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_notification_service__["a" /* NotificationService */]) === "function" && _b || Object])
 ], ThtPlaygroundComponent);
 
 var _a, _b;
@@ -1317,7 +1315,7 @@ module.exports = "<div class=\"example-container mat-elevation-z8\">\n    <md-ta
 /* unused harmony export ExampleDatabase */
 /* unused harmony export ExampleDataSource */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_table__ = __webpack_require__("../../../cdk/@angular/cdk/table.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_table__ = __webpack_require__("../../../cdk/esm5/table.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__("../../../../rxjs/BehaviorSubject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_startWith__ = __webpack_require__("../../../../rxjs/add/operator/startWith.js");
@@ -1407,6 +1405,7 @@ var CATEGORY = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
 /** An example database that the data source uses to retrieve data for the table. */
 var ExampleDatabase = (function () {
     function ExampleDatabase(dataService, notificationService) {
+        var _this = this;
         this.dataService = dataService;
         this.notificationService = notificationService;
         /** Stream that emits whenever the data has been modified. */
@@ -1415,6 +1414,13 @@ var ExampleDatabase = (function () {
         this.recipeNames = [];
         this.tablefilling = [];
         this.getData();
+        this.notificationService.successNotificationTriggered
+            .subscribe(function (success) {
+            _this.success = success;
+            if (_this.success.record) {
+                _this.addUser(_this.success.record);
+            }
+        });
     }
     Object.defineProperty(ExampleDatabase.prototype, "data", {
         get: function () { return this.dataChange.value; },
@@ -1427,7 +1433,7 @@ var ExampleDatabase = (function () {
         this.dataService.onRead(this.url)
             .subscribe(function (response) {
             _this.result = response;
-            _this.records = _this.result.obj;
+            _this.records = _this.result.record;
             for (var i = 0; i < _this.records.length; i++) {
                 // this.addUser(this.records); 
                 _this.names.push(_this.records[i].username);
@@ -1438,23 +1444,16 @@ var ExampleDatabase = (function () {
         }, function (error) { return console.log(error); });
     };
     ExampleDatabase.prototype.ngOnInit = function () {
-        var _this = this;
-        this.notificationService.successNotificationTriggered
-            .subscribe(function (success) {
-            _this.success = success;
-            console.log(_this.success);
-        });
     };
     ExampleDatabase.prototype.ngOnChanges = function () {
-        this.getData();
     };
     /** Adds a new user to the database. */
-    ExampleDatabase.prototype.addUser = function (records) {
-        // const copiedData = [];
-        // copiedData.push(records);
-        // copiedData.push(this.createNewUser(copiedData));
-        // console.log(copiedData);
-        // this.dataChange.next(copiedData[1]);
+    ExampleDatabase.prototype.addUser = function (record) {
+        var recordData = [];
+        var copiedData = this.dataChange.value;
+        recordData.push(this.createNewUser(record.username, record.recipe_name));
+        copiedData.push(recordData[0]);
+        this.dataChange.next(copiedData);
     };
     /** Builds and returns a new User. */
     ExampleDatabase.prototype.createNewUser = function (usernames, recipenames) {
@@ -1704,7 +1703,7 @@ module.exports = "<!-- Only needs to have some code if a button should trigger t
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SnackBarErrorComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SnackBarSuccessComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_notification_service__ = __webpack_require__("../../../../../src/services/notification.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2046,11 +2045,12 @@ Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* pl
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Notification; });
 var Notification = (function () {
-    function Notification(type, title, message, severity) {
+    function Notification(type, title, message, severity, record) {
         this.type = type;
         this.title = title;
         this.message = message;
         this.severity = severity;
+        this.record = record;
     }
     return Notification;
 }());
@@ -2118,8 +2118,31 @@ var ShoppingListItem = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataManagementService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__("../../../../rxjs/Rx.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__data_service__ = __webpack_require__("../../../../../src/services/data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__notification_service__ = __webpack_require__("../../../../../src/services/notification.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
 var DataManagementService = (function () {
-    function DataManagementService() {
+    function DataManagementService(dataService, notificationService) {
+        this.dataService = dataService;
+        this.notificationService = notificationService;
+        this.url = 'http://localhost:3000/ams';
     }
     DataManagementService.prototype.getCollection = function (entity) {
     };
@@ -2128,12 +2151,25 @@ var DataManagementService = (function () {
     DataManagementService.prototype.getControls = function () {
     };
     DataManagementService.prototype.getControlsByEntity = function (entity) {
+        var _this = this;
         // this.chosenentity = entity;
         // return this.chosenentity.slice();
+        this.dataService.onRead(this.url)
+            .subscribe(function (response) {
+            _this.controls = response;
+            var result = response;
+            console.log(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Response */]);
+            _this.notificationService.handleOnSuccess(_this.controls);
+        }, function (error) { return console.log(error); });
     };
     return DataManagementService;
 }());
+DataManagementService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__data_service__["a" /* DataService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__notification_service__["a" /* NotificationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__notification_service__["a" /* NotificationService */]) === "function" && _b || Object])
+], DataManagementService);
 
+var _a, _b;
 //# sourceMappingURL=data-management.service.js.map
 
 /***/ }),
@@ -2290,11 +2326,11 @@ var NotificationService = (function () {
     }
     NotificationService.prototype.handleOnError = function (notification) {
         // console.log(errorObject);
-        var notificationData = new __WEBPACK_IMPORTED_MODULE_1__models_notification_model__["a" /* Notification */](notification.type, notification.title, notification.error.message, notification.severity);
+        var notificationData = new __WEBPACK_IMPORTED_MODULE_1__models_notification_model__["a" /* Notification */](notification.type, notification.title, notification.error.message, notification.severity, notification.record);
         this.errorNotificationTriggered.emit(notificationData);
     };
     NotificationService.prototype.handleOnSuccess = function (notification) {
-        var notificationData = new __WEBPACK_IMPORTED_MODULE_1__models_notification_model__["a" /* Notification */](notification.type, notification.title, notification.message, notification.severity);
+        var notificationData = new __WEBPACK_IMPORTED_MODULE_1__models_notification_model__["a" /* Notification */](notification.type, notification.title, notification.message, notification.severity, notification.record);
         this.successNotificationTriggered.emit(notificationData);
     };
     return NotificationService;
