@@ -6,7 +6,7 @@ const User = require('./user');
 
 const recipeSchema = new Schema({
     recipe_name: { type: String, required: true, unique: true },
-    description: { type: String, required: true, unique: true },
+    preperation: { type: String, required: true, unique: true },
     image_path: { type: String, required: false, unique: true },
     ingredients: { type: Object, required: false },
     category: { type: String, required: false },

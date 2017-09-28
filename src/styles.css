@@ -1,3 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 /* Angular Material Theme */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css'
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+#recipeForm .tht-input-container {
+    width: 500px;
+}

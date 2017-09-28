@@ -1,13 +1,14 @@
 <h1 md-dialog-title>Add your recipe</h1>
 <div md-dialog-content>
     <form class="add-record-form" id="recipeForm">
-        <md-input-container> 
+        <!-- <md-input-container> 
             <input mdInput placeholder="What's the name of your recipe?" [(ngModel)]="recipe_name" [ngModelOptions]="{standalone: true}">
         </md-input-container>
         <br/>
         <md-input-container> 
             <input mdInput placeholder="Description" [(ngModel)]="description" [ngModelOptions]="{standalone: true}">
-        </md-input-container>
+        </md-input-container> -->
+        <tht-controls *ngFor="let control of controls" [control]="control"></tht-controls>
         <button md-button md-raised-button md-button-color='primary' (click)='onAddRecord()'>Add</button>
     </form>
     <br />

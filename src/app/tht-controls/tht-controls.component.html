@@ -1,7 +1,7 @@
 <div class="controls-container" [ngSwitch]="true">
    <span class="tht-date-input" *ngSwitchCase="control.ControlType === 'DateTimeControl'">
     <md-form-field class="tht-input-container">
-        <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+        <input mdInput [mdDatepicker]="picker" placeholder="Choose a date" name="ModelName" [(ngModel)]="control.Value">
         <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
         <md-datepicker #picker></md-datepicker>
     </md-form-field>
@@ -9,19 +9,19 @@
   <span class="tht-input-field" *ngSwitchCase="control.ControlType === 'InputFieldControl'">
     <md-form-field class="tht-input-container">
       <md-icon class="suffix-icon" *ngIf="control.Suffix !== null" mdPrefix>{{control.Prefix}} &nbsp;</md-icon>
-      <input mdInput placeholder="{{control.Placeholder}}" type="text">
+      <input mdInput placeholder="{{control.Placeholder}}" type="text" name="ModelName" [(ngModel)]="control.Value">
     </md-form-field>
   </span>
   <span class="tht-input-field" *ngSwitchCase="control.ControlType === 'NumberControl'">
     <md-form-field class="tht-input-container">
         <md-icon class="suffix-icon" mdPrefix>{{control?.Prefix}} &nbsp;</md-icon>
-      <input mdInput placeholder="{{control.DisplayName}}" type="number">
+      <input mdInput placeholder="{{control.DisplayName}}" type="number" name="ModelName" [(ngModel)]="control.Value">
       <md-hint [align]="start">{{ control?.Hint }}</md-hint>
     </md-form-field>
   </span>
   <p class="tht-textarea" *ngSwitchCase="control.ControlType === 'TextAreaControl'">
       <md-form-field class="tht-input-container">
-        <textarea mdInput placeholder="{{control.DisplayName}}"></textarea>
+        <textarea mdInput placeholder="{{control.DisplayName}}" name="ModelName" [(ngModel)]="control.Value"></textarea>
         <md-hint [align]="start">{{ control?.ToolTip }}</md-hint>
       </md-form-field>
     </p>

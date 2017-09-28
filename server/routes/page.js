@@ -16,7 +16,8 @@ router.get('/', (req, res) => {
 
         res.status(200).json({
             message: 'Succesfully retrieved the application fields',
-            record: applicationComponent
+            record: applicationComponent,
+            type:'ApplicationConfigurationManagement'
         });
     });
 });

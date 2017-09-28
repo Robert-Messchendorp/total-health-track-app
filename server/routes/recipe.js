@@ -55,7 +55,7 @@ router.post('/', (req, res, next) => {
 
         const recipe = new Recipe({
             recipe_name: req.body[0].recipe_name,
-            description: req.body[0].description,
+            preperation: req.body[0].preperation,
             ingredients: req.body[0].ingredients,
             category: req.body[0].category,
             date_created: req.body[0].date_created,

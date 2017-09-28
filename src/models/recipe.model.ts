@@ -14,7 +14,7 @@
 // Much more shorthand notation
 export class Recipe {
     constructor(public recipe_name  :string,
-                public description  :string,
+                public preperation  :string,
                 public imagePath    :string,
                 public ingredients  : object,
                 public category     : string,
