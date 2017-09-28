@@ -24,7 +24,8 @@ import {  MdButtonModule,
           MdFormFieldModule,
           MdTabsModule,
           MdSnackBarModule,
-          MdNativeDateModule } from '@angular/material'; 
+          MdNativeDateModule,
+          MatChipsModule } from '@angular/material'; 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CdkTableModule } from '@angular/cdk/table';
 
@@ -116,7 +117,8 @@ export function init(config: StartupService) {
     routing,
     MdTabsModule,
     MdSnackBarModule,
-    MdNativeDateModule
+    MdNativeDateModule,
+    MatChipsModule
   ],
   entryComponents: [
     ThtAddRecordDialogueComponent,

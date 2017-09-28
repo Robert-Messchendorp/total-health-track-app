@@ -1,0 +1,22 @@
+.controls-container {
+    margin: 10px;
+}
+
+.tht-textarea {
+    min-height: 100px;
+    height: 100px;
+}
+
+.suffix-icon {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.tht-checkbox-control {
+    margin: 7px;
+}
+
+.tht-input-container {
+    max-width: 30%;
+    width: 20%;
+}
