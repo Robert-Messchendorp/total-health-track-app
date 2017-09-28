@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { NgSwitch }  from '@angular/common';
 
 @Component({
   selector: 'tht-controls',
@@ -7,10 +8,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ThtControlsComponent implements OnInit {
+  @Input('control') control;
 
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

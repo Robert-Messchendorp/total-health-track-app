@@ -67,7 +67,7 @@ selectedRecord: Recipe;
       .subscribe(
         (applicationFields: ApplicationFields) => {
           this.fields = applicationFields;
-          this.navigation = [...this.fields.obj[0].Navigation];
+          this.navigation = [...this.fields.record[0].Navigation];
           console.log(this.navigation);
         }
       )

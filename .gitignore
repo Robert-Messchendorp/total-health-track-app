@@ -1,2 +1,6 @@
 
 dist/assets/json/application-generation.json
+node_modules/
+dist/*
+npm-debug.log
+dist/index.html

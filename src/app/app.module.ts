@@ -23,7 +23,8 @@ import {  MdButtonModule,
           MdSlideToggleModule,
           MdFormFieldModule,
           MdTabsModule,
-          MdSnackBarModule } from '@angular/material'; 
+          MdSnackBarModule,
+          MdNativeDateModule } from '@angular/material'; 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CdkTableModule } from '@angular/cdk/table';
 
@@ -114,7 +115,8 @@ export function init(config: StartupService) {
     MdSlideToggleModule,
     routing,
     MdTabsModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdNativeDateModule
   ],
   entryComponents: [
     ThtAddRecordDialogueComponent,

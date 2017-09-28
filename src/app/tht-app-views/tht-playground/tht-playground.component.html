@@ -4,6 +4,6 @@
     <md-card-subtitle>Playground input card with JSON controls</md-card-subtitle>
   </md-card-header>
   <md-card-content>
-    <tht-controls *ngFor="let control of controls"></tht-controls>
+    <tht-controls *ngFor="let control of controls" [control]='control'></tht-controls>
   </md-card-content>
 </md-card>

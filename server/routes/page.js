@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
         res.status(200).json({
             message: 'Succesfully retrieved the application fields',
-            obj: applicationComponent
+            record: applicationComponent
         });
     });
 });

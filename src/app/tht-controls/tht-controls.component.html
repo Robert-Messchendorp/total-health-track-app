@@ -1,66 +1,71 @@
-<div class="controls-container" [ngSwitch]="control.ControlType">
-   <span class="tht-date-input" *ngSwitchCase="control.ControlType === DateTimeControl">
+<div class="controls-container" [ngSwitch]="true">
+   <span class="tht-date-input" *ngSwitchCase="control.ControlType === 'DateTimeControl'">
     <md-form-field>
         <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
         <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
         <md-datepicker #picker></md-datepicker>
     </md-form-field>
   </span>
-  <span class="tht-input-field" *ngSwitchCase="control.ControlType === InputFieldControl">
+  <span class="tht-input-field" *ngSwitchCase="control.ControlType === 'InputFieldControl'">
     <md-form-field>
-      <input mdInput placeholder="control.DisplayName" type="text">
+      <input mdInput placeholder="{{control.Placeholder}}" type="text">
     </md-form-field>
   </span>
-  <span class="tht-input-field" *ngSwitchCase="control.ControlType === NumberControl">
+  <span class="tht-input-field" *ngSwitchCase="control.ControlType === 'NumberControl'">
     <md-form-field>
-      <input mdInput placeholder="control.DisplayName" type="number">
+      <input mdInput placeholder="{{control.DisplayName}}" type="number">
     </md-form-field>
   </span>
-  <!-- <span class="tht-textarea" *ngSwitchCase="control.ControlType === TextAreaControl">
-    <md-form-field>
-      <textarea mdInput placeholder="control.DisplayName">
-      <md-hint [align]="end" *ngIf="control.ToolTip !== null">{{ control.ToolTip }}</md-hint>
-    </md-form-field>
-  </span> -->
-  <span class="tht-checkbox-control" *ngSwitchCase="control.ControlType === CheckBoxControl">
-    <md-checkbox class="tht-checkbox-control" [align]="control.LabelPosition"> {{ control.DisplayName }} </md-checkbox>
+  <p class="tht-textarea" *ngSwitchCase="control.ControlType === 'TextAreaControl'">
+      <md-form-field>
+        <textarea mdInput placeholder="{{control.DisplayName}}"></textarea>
+        <md-hint [align]="end" *ngIf="control.ToolTip !== 'null'">{{ control.ToolTip }}</md-hint>
+      </md-form-field>
+    </p>
+  <span class="tht-checkbox-control" *ngSwitchCase="control.ControlType === 'CheckBoxControl'">
+    <md-checkbox class="tht-checkbox-control" *ngFor="let option of control.Options" [align]="control.LabelPosition"> {{ option.value
+       }} </md-checkbox>
   </span>
-  <span class="tht-radio-button-control" *ngSwitchCase="control.ControlType === RadioButtonControl">
+  <span class="tht-radio-button-control" *ngSwitchCase="control.ControlType === 'RadioButtonControl'">
     <div class="tht-radio-button-control-type">
       <span class="tht-radio-button-control-group" *ngIf="control.RadioButtonConfig === RadioButtonGroupDisplay">
         <md-radio-group class="tht-radio-button-group-control">
-          <md-radio-button class="tht-radio-button" *ngFor="let option of control.Options" [align]="control.LabelPosition">
+          <md-radio-button class="tht-radio-button" *ngFor="let option of control.Options" [align]="LabelPosition">
           </md-radio-button>
         </md-radio-group>
       </span>
-      <span class="tht-single-instance-radio-button" *ngIf="control.RadioButtonConfig === RadioButtonSingleInstance">
-          <md-radio-button class="tht-radio-button" [align]="control.LabelPosition">
+      <span class="tht-single-instance-radio-button" *ngIf="RadioButtonConfig === RadioButtonSingleInstance">
+          <md-radio-button class="tht-radio-button" [align]="LabelPosition">
           </md-radio-button>
       </span>
     </div>
   </span>
-  <span class="tht-picklist-control" *ngSwitchCase="control.ControlType === PickListControl">
+  <span class="tht-picklist-control" *ngSwitchCase="control.ControlType === 'PickListControl'">
   </span>
-  <span class="tht-slider-control" *ngSwitchCase="control.ControlType === SliderControl">
-    <md-slider  [min]="control.Minimum_Value" 
-                [max]="control.Maximum_Value" 
-                [step]="control.Step_Value" 
-                [thumb-label]="control.ThumbLabel" 
-                [tick-interval]="control.TickInterval">
+  <span class="tht-slider-control" *ngSwitchCase="control.ControlType === 'SliderControl'">
+    <md-slider  [min]="Minimum_Value" 
+                [max]="Maximum_Value" 
+                [step]="Step_Value" 
+                [thumb-label]="ThumbLabel" 
+                [tick-interval]="TickInterval">
     </md-slider>
   </span>
-  <span class="tht-toggle-control" *ngSwitchCase="control.ControlType === ToggleControl">
+  <span class="tht-toggle-control" *ngSwitchCase="control.ControlType === 'ToggleControl'">
     <md-slide-toggle  class="tht-toggle-control"
-                      [color]="control.ColorSelection"
-                      [labelPosition]="control.LabelPosition"
-                      [name]="control.Name"
-                      [required]="control.RequiredLevel"
-                      [id]="control.Id">
-                      {{ control.DisplayName }}
+                      [color]="ColorSelection"
+                      [labelPosition]="LabelPosition"
+                      [name]="Name"
+                      [required]="RequiredLevel"
+                      [id]="Id">
+                      {{ DisplayName }}
     </md-slide-toggle>
   </span>
-  <span class="tht-button-control" *ngSwitchCase="control.ControlType === ButtonControl">
+  <span class="tht-button-control" *ngSwitchCase="control.ControlType === 'ButtonControl'">
   </span>
-  <span class="tht-chip-control" *ngSwitchCase="control.ControlType === ChipControl">
+  <span class="tht-chip-control" *ngSwitchCase="control.ControlType === 'ChipControl'">
+    Ik werk zodra ik iets heb geplaatst van ChipControl material
   </span>
+  <span class="tht-default-control" *ngSwitchDefault>
+    Atleas  is hoew
+    </span>
 </div>
