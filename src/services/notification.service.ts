@@ -5,6 +5,7 @@ export class NotificationService {
     // errorOccured = new EventEmitter<Error>();
     errorNotificationTriggered = new EventEmitter<Notification>();
     successNotificationTriggered = new EventEmitter<Notification>();
+    addRecipeConfiguration = new EventEmitter<Notification>();
     applicationConfigNotification = new EventEmitter<Notification>();
     
     handleOnError(notification: any) {
@@ -15,10 +16,11 @@ export class NotificationService {
 
     handleOnSuccess(notification: any) {
         const notificationData = new Notification(notification.type, notification.title, notification.message, notification.severity, notification.record);
-        if(notificationData.type !== 'ApplicationConfigurationManagement') {
             this.successNotificationTriggered.emit(notificationData);
-        } else {
-            this.applicationConfigNotification.emit(notificationData);
-        }
+    }
+
+    broadcastApplication(notification: any) {
+        const notificationData = new Notification(notification.type, notification.title, notification.message, notification.severity, notification.record);
+        this.applicationConfigNotification.emit(notificationData);
     }
 }

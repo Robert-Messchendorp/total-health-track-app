@@ -18,6 +18,8 @@ export class Recipe {
                 public imagePath    :string,
                 public ingredients  : object,
                 public category     : string,
+                public preparation_time:number,
+                public costs_per_person: number,
                 public id           : number,
                 public user         : string,
                 public date_created  : string,

@@ -82,6 +82,7 @@ router.post('/', (req, res, next) => {
                 message: 'Thank you for your contribution to the platform',
                 record: createdRecipe,
                 severity: 'Information',
+                type: 'User'
             });
         });
     })

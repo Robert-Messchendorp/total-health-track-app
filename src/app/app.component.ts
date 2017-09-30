@@ -2,10 +2,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Recipe } from '../models/recipe.model';
 import { ApplicationFields } from '../models/application.model';
+import { Notification } from '../models/notification.model';
 
 import { DataService } from '../services/data.service';
 import { RecipeService } from '../services/feature services/recipe.service';
 import { StartupService } from '../services/startup.service';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-root',
@@ -14,26 +16,15 @@ import { StartupService } from '../services/startup.service';
   providers: [RecipeService]
 })
 export class AppComponent implements OnInit {
-selectedRecord: Recipe;  
-  // title = 'Stefan Boonstra';
-  // todo = '';
+  selectedRecord: Recipe;  
   entity:string;
-  // records = [{
-  //   name: 'Stefan Boonstra',
-  //   recipe_name: 'Whatever Anette cooks'
-  // },
-  // {
-  //   name: 'Robert Messchendorp',
-  //   recipe_name: 'Pasta Pesto Pollo'
-  // }];
   records: {name: string, recipe_name: string, timestamp: number} [] = [];
   fields;
   navigation;
-
+  
   @Output() menuItemSelected = new EventEmitter<{menuItemSelected:string}>();
 
-  constructor(private dataService: DataService, private recipeService: RecipeService, private startupService: StartupService) {}
-
+    constructor(private dataService: DataService, private recipeService: RecipeService, private startupService: StartupService, private notificationService:NotificationService) {}
   onRecordCreated(recordData: { name:string, recipe_name: string, timestamp: number  }) {
     this.records.push({
       name: recordData.name,
@@ -55,6 +46,7 @@ selectedRecord: Recipe;
   }
 
   ngOnInit() {
+
     this.records = this.dataService.records;
     this.recipeService.entitySelected
       .subscribe(
@@ -66,9 +58,10 @@ selectedRecord: Recipe;
     this.startupService.getApplicationFields()
       .subscribe(
         (applicationFields: ApplicationFields) => {
+
           this.fields = applicationFields;
           this.navigation = [...this.fields.record[0].Navigation];
-          console.log(this.navigation);
+          this.notificationService.broadcastApplication(this.fields);
         }
       )
   }

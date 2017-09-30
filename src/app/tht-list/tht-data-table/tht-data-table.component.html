@@ -1,33 +1,11 @@
 <div class="example-container mat-elevation-z8">
     <md-table #table [dataSource]="dataSource">
   
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-  
-      <!-- ID Column -->
-      <ng-container cdkColumnDef="recipeName">
-        <md-header-cell *cdkHeaderCellDef> Recipe name </md-header-cell>
+      <ng-container [cdkColumnDef]="column.ColumnDef" *ngFor="let column of columns">
+        <md-header-cell *cdkHeaderCellDef> {{column.ColumnHeader}} </md-header-cell>
         <md-cell *cdkCellDef="let row" 
                   class="call-to-detail-link"
-                  (click)="callToDetail(row)"> {{row.recipename}} </md-cell>
-      </ng-container>
-  
-      <!-- Progress Column -->
-      <ng-container cdkColumnDef="CostsPP">
-        <md-header-cell *cdkHeaderCellDef> Costs P/Person </md-header-cell>
-        <md-cell *cdkCellDef="let row"> {{row.costs}} </md-cell>
-      </ng-container>
-  
-      <!-- Name Column -->
-      <ng-container cdkColumnDef="userName">
-        <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
-        <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
-      </ng-container>
-  
-      <!-- Color Column -->
-      <ng-container cdkColumnDef="Category">
-        <md-header-cell *cdkHeaderCellDef>Category</md-header-cell>
-        <md-cell *cdkCellDef="let row"> {{row.category}} </md-cell>
+                  (click)="callToDetail(row)"> {{row[column.ColumnDef]}} </md-cell>
       </ng-container>
   
       <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>

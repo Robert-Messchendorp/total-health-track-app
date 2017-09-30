@@ -28,16 +28,13 @@ export class DataManagementService {
     }
 
     getControlsByEntity ( entity:string ) {
-        // this.chosenentity = entity;
-        // return this.chosenentity.slice();
+        this.chosenentity = entity;
           this.dataService.onRead(this.url)
             .subscribe(
                 (response: Response) => {
                 this.controls = response;
                 const result = response;
-                console.log(Response);
-
-                this.notificationService.handleOnSuccess(this.controls);
+                this.notificationService.broadcastApplication(this.controls);
             },
                 (error) => console.log(error)
             );

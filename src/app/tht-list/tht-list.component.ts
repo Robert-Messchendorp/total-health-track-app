@@ -38,11 +38,14 @@ export class ThtListComponent implements OnInit, OnChanges {
   // @Input disableRipple: true;
   @Input('listRecord') record: Recipe;
   selectedRecord;
+  @Input('tableDefinition') tableToPassOn;
+  tableDefinition;
+
   
   constructor( private recipeService:RecipeService) { }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
+    this.tableDefinition = changes.tableToPassOn;
   }
 
   ngOnInit() {
@@ -55,7 +58,6 @@ export class ThtListComponent implements OnInit, OnChanges {
 
   onRecordSelected(recordData: object) {
     this.selectedRecord = recordData;
-    // console.log(this.selectedRecord);
     this.recipeService.entitySelected.emit(this.selectedRecord);
   } 
 

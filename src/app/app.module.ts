@@ -1,7 +1,7 @@
 // Imports for Core Angular functions
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule} from '@angular/router';
 import { NgSwitch } from '@angular/common';
@@ -118,7 +118,8 @@ export function init(config: StartupService) {
     MdTabsModule,
     MdSnackBarModule,
     MdNativeDateModule,
-    MatChipsModule
+    MatChipsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     ThtAddRecordDialogueComponent,

@@ -5,7 +5,7 @@
         fxLayoutGap="10px"
         fxLayoutGap.xs="0">
     <div class="list-overview" fxFlex fxFlexOffset="50px"  fxFlexOffset.xs="0">
-        <tht-list [listRecord]="record"></tht-list>
+        <tht-list [listRecord]="record" [tableDefinition]="tableDefinition"></tht-list>
     </div>
     <div class="detail-overview" fxFlex="500px" *ngIf="entity === 'recipes'">
       <tht-detail *ngIf = "selectedRecord; else infoText"
@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="add-record-dialogue-area">
-    <tht-add-record-dialogue (recordCreated)="onRecordCreated($event)" ></tht-add-record-dialogue>
+    <tht-add-record-dialogue (recordCreated)="onRecordCreated($event)" [inputCard]="inputCard"></tht-add-record-dialogue>
   </div>
   <div class="shopping-list-container">
     <tht-information-card></tht-information-card>

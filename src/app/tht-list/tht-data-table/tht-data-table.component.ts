@@ -1,4 +1,5 @@
-import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges, EventEmitter, Output, Input, AfterViewChecked } from '@angular/core';
+import { Router } from '@angular/router';
 
 // Data table specific imports
 import {DataSource} from '@angular/cdk/table';
@@ -25,19 +26,24 @@ import { DataService } from '../../../services/data.service';
 })
 export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
   
-    displayedColumns = ['recipeName', 'userName', 'CostsPP', 'Category'];
+    displayedColumns = [];
+    columns = [];
     dataSource: ExampleDataSource | null;
     exampleDatabase;
     result;
     records;
     record;
+    application: Notification;
     success: Notification;
     url: string;
+    currentTable: Object;
+    @Input('tableDefinition') tableDefinition: Object;
     @Output() recordSelected = new EventEmitter<{}>();
 
-    constructor (private recipeService: RecipeService, private dataService: DataService, private notificationService: NotificationService) {
-      // this.records = recipeService.getRecipes();
-      // console.log(this.records);
+    constructor (private recipeService: RecipeService, 
+                private dataService: DataService, 
+                public router: Router,
+                private notificationService: NotificationService) {
      }
   
     ngOnInit() {
@@ -57,7 +63,10 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-      
+      if(changes.tableDefinition.currentValue.currentValue && !changes.tableDefinition.previousValue.currentValue) {
+        this.currentTable = changes.tableDefinition.currentValue.currentValue;
+        this.defineTable(this.currentTable);
+      }
     }
   
     callToDetail(record: object) {
@@ -66,24 +75,28 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
       // when the detail component and data via service can be loaded you can search in the recipes with recipe name or maybe I can use 
       // the id of the record in a hidden column
     }
-  }
 
-  
-  
+    defineTable(tableDefinition) {
+      for (let column of tableDefinition) {
+        this.columns.push(column);
+        this.displayedColumns.push(column.ColumnDef);
+      }
+    }
+  }
   /** Constants used to fill up our data base. */
   const CATEGORY = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
     'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-  
 
   export interface UserData {
-    recipename: string;
-    name: string;
-    costs: string;
+    recipe_name: string;
+    user_name: string;
+    costs_per_person: string;
     category: string;
+    preperation_time: string;
   }
   
   /** An example database that the data source uses to retrieve data for the table. */
-  export class ExampleDatabase implements OnInit, OnChanges {
+  export class ExampleDatabase implements OnInit, OnChanges, AfterViewChecked {
     /** Stream that emits whenever the data has been modified. */
     dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
     get data(): UserData[] { return this.dataChange.value; }
@@ -93,6 +106,9 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
     success: Notification;
     names = [];
     recipeNames = [];
+    costsPerPerson = [];
+    category = [];
+    preperationTime = [];
     tablefilling = [];
   
     constructor(private dataService:DataService, private notificationService: NotificationService) {
@@ -119,6 +135,8 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
               // this.addUser(this.records); 
               this.names.push(this.records[i].username);
               this.recipeNames.push(this.records[i].recipe_name);
+              this.category.push(this.records[i].category);
+              // this.costsPerPerson.push(this.records[i].)
               this.tablefilling.push(this.createNewUser(this.names[i], this.recipeNames[i]));
             }
             this.dataChange.next(this.tablefilling);
@@ -134,6 +152,11 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
     ngOnChanges() {
       
     }
+
+    ngAfterViewChecked() {
+      
+    }
+    
   
     /** Adds a new user to the database. */
     addUser(record) {
@@ -152,10 +175,11 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
       const recipename = recipenames;
   
       return {
-        recipename: recipename,
-        name: name,
-        costs: Math.round(Math.random() * 100).toString(),
-        category: CATEGORY[Math.round(Math.random() * (CATEGORY.length - 1))]
+        recipe_name: recipename,
+        user_name: name,
+        costs_per_person: Math.round(Math.random() * 100).toString(),
+        category: CATEGORY[Math.round(Math.random() * (CATEGORY.length - 1))],
+        preperation_time: Math.round(Math.random() * 100).toString()
       };
     }
   }
