@@ -71,6 +71,7 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
   
     callToDetail(record: object) {
       this.record = record;
+      console.log(this.record);
       this.recordSelected.emit(this.record);
       // when the detail component and data via service can be loaded you can search in the recipes with recipe name or maybe I can use 
       // the id of the record in a hidden column
@@ -79,20 +80,20 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
     defineTable(tableDefinition) {
       for (let column of tableDefinition) {
         this.columns.push(column);
-        this.displayedColumns.push(column.ColumnDef);
+        if (column.ColumnDef !== 'recipe_Id') {
+          this.displayedColumns.push(column.ColumnDef);
+        }
       }
     }
   }
-  /** Constants used to fill up our data base. */
-  const CATEGORY = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-    'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
 
   export interface UserData {
+    recipe_Id: string,
     recipe_name: string;
     user_name: string;
     costs_per_person: string;
     category: string;
-    preperation_time: string;
+    preparation_time: string;
   }
   
   /** An example database that the data source uses to retrieve data for the table. */
@@ -104,6 +105,7 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
     result;
     records;
     success: Notification;
+    recordId = [];
     names = [];
     recipeNames = [];
     costsPerPerson = [];
@@ -131,13 +133,16 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
           (response: Response) => {
             this.result = response;
             this.records = this.result.record;
+            console.log(this.records);
             for (let i = 0; i < this.records.length; i++) { 
               // this.addUser(this.records); 
+              this.recordId.push(this.records[i]._id);
               this.names.push(this.records[i].username);
               this.recipeNames.push(this.records[i].recipe_name);
               this.category.push(this.records[i].category);
-              // this.costsPerPerson.push(this.records[i].)
-              this.tablefilling.push(this.createNewUser(this.names[i], this.recipeNames[i]));
+              this.costsPerPerson.push(this.records[i].costs_per_person);
+              this.preperationTime.push(this.records[i].preparation_time);
+              this.tablefilling.push(this.createNewUser(this.recordId[i], this.names[i], this.recipeNames[i], this.costsPerPerson[i], this.preperationTime[i], this.category[i]));
             }
             this.dataChange.next(this.tablefilling);
           },
@@ -162,24 +167,23 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
     addUser(record) {
       const recordData: any = [];
       const copiedData: UserData[] = this.dataChange.value;
-      recordData.push(this.createNewUser(record.username, record.recipe_name));
+      recordData.push(this.createNewUser(record.recipeId, record.username, record.recipe_name, record.costs_per_person, record.preparation_time, record.category));
       
       copiedData.push(recordData[0]);
       this.dataChange.next(copiedData);
     }
 
     /** Builds and returns a new User. */
-    private createNewUser(usernames, recipenames) {
+    private createNewUser(recipeId,usernames, recipenames, costsPerPerson, preperationTime, category) {
       const name = usernames;
-  
       const recipename = recipenames;
-  
       return {
+        recipe_Id: recipeId,
         recipe_name: recipename,
         user_name: name,
-        costs_per_person: Math.round(Math.random() * 100).toString(),
-        category: CATEGORY[Math.round(Math.random() * (CATEGORY.length - 1))],
-        preperation_time: Math.round(Math.random() * 100).toString()
+        costs_per_person: costsPerPerson,
+        category: category,
+        preparation_time: preperationTime
       };
     }
   }

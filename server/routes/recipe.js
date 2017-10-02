@@ -24,6 +24,45 @@ router.get('/', (req, res, next) => {
         });
 });
 
+router.get('/:id', (req, res, next) => {
+    Recipe.findById(req.params.id, (err, recipe) => {
+        if (err) {
+            return res.status(500).json({
+                type: 'Server',
+                title: 'An error occured',
+                error: err,
+                severity: 'Error'
+            });
+        }
+
+        if (!recipe) {
+            res.status(404).json({
+                type: 'Application',
+                title: 'Recipe could not be found',
+                error: {message: "The recipe sought for with id: " + req.params.id + " could not be found"},
+                severity: 'Error'
+            });
+        }
+
+        res.status(200).json({
+            type: 'User',
+            title: 'Recipe selected',
+            message: "The recipe sought for with id: " + req.params.id + " is found",
+            severity: 'Error',
+            record: recipe
+        })
+
+        // if (recipe.user !== req.query.userid) {
+        //     res.status(401).json({
+        //         type: 'User',
+        //         title: 'Not authenticated',
+        //         error: {message: "You are not allowed to modify the recipes of another user"},
+        //         severity: 'Information'
+        //     });
+        // }
+});
+});
+
 // Implement the backend route protection here later as well
 router.use('/', function(req, res, next) {
     jwt.verify(req.query.token, 'secret', function(err, decoded) {
@@ -58,6 +97,8 @@ router.post('/', (req, res, next) => {
             preperation: req.body[0].preperation,
             ingredients: req.body[0].ingredients,
             category: req.body[0].category,
+            preparation_time: req.body[0].preparation_time,
+            costs_per_person: req.body[0].costs_per_person,
             date_created: req.body[0].date_created,
             date_updated: req.body[0].date_updated,
             user: user._id,

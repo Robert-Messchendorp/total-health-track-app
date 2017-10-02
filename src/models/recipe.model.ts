@@ -20,7 +20,7 @@ export class Recipe {
                 public category     : string,
                 public preparation_time:number,
                 public costs_per_person: number,
-                public id           : number,
+                public recipe_Id           : string,
                 public user         : string,
                 public date_created  : string,
                 public date_updated  : string,

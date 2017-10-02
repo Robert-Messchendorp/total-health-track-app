@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { NgSwitch }  from '@angular/common';
 import {MdChipInputEvent, ENTER} from '@angular/material';
 
@@ -10,21 +10,27 @@ const COMMA = 188;
   styleUrls: ['./tht-controls.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class ThtControlsComponent implements OnInit {
+export class ThtControlsComponent implements OnInit, OnChanges {
   @Input('control') control;
+  @Output('control.Value') value;
   visible: boolean = true;
   selectable: boolean = true;
   removable: boolean = true;
   addOnBlur: boolean = true;
+  separatorKeysCodes = [ENTER, COMMA];
+  
 
-  ingredients = [
-    
-  ];
-
-  constructor() { }
+  constructor() {
+  
+   }
 
   ngOnInit() {
+    this.control["Value"] = [];
     
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // console.log(changes);
   }
 
   add(event: MdChipInputEvent): void {
@@ -33,7 +39,7 @@ export class ThtControlsComponent implements OnInit {
 
     // Add our person
     if ((value || '').trim()) {
-      this.ingredients.push({ name: value.trim() });
+      this.control.Value.push({ name: value.trim() });
     }
 
     // Reset the input value
@@ -43,11 +49,12 @@ export class ThtControlsComponent implements OnInit {
   }
 
   remove(fruit: any): void {
-    let index = this.ingredients.indexOf(fruit);
+    let index = this.control.Value.indexOf(fruit);
 
     if (index >= 0) {
-      this.ingredients.splice(index, 1);
+      this.control.Value.splice(index, 1);
     }
   }
+
 
 }

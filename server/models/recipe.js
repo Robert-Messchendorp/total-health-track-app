@@ -10,6 +10,8 @@ const recipeSchema = new Schema({
     image_path: { type: String, required: false, unique: true },
     ingredients: { type: Object, required: false },
     category: { type: String, required: false },
+    preparation_time: { type: Number, required: false },
+    costs_per_person: {type: Number, required: false},
     date_created: { type: Date, required: true },
     date_updated: { type: Date, required: false },
     user: { type: Schema.Types.ObjectId, ref: 'User' },

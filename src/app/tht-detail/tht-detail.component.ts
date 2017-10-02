@@ -21,12 +21,20 @@ export class ThtDetailComponent implements OnInit {
 
   
   ngOnInit() {
-    this.ingredients = this.shoppingListService.getIngredients();
+    // this.ingredients = this.shoppingListService.getIngredients();
     this.recipeService.entitySelected
     .subscribe(
       (recipe: Recipe) => {
-        this.selectedRecord = recipe;
-        console.log(this.selectedRecord);
+        const url = "http://localhost:3000/recipes/" + this.recipe.recipe_Id;
+        this.recipeService.getRecipe(url)
+          .subscribe(
+            (result: Recipe) => {
+              this.selectedRecord = result;
+              this.ingredients = this.selectedRecord.record.ingredients;
+              console.log(this.ingredients);
+              console.log(this.selectedRecord);
+            }
+          )
       }
     );
   }

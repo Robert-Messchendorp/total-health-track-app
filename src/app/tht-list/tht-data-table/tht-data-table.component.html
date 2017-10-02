@@ -3,7 +3,7 @@
   
       <ng-container [cdkColumnDef]="column.ColumnDef" *ngFor="let column of columns">
         <md-header-cell *cdkHeaderCellDef> {{column.ColumnHeader}} </md-header-cell>
-        <md-cell *cdkCellDef="let row" 
+        <md-cell *cdkCellDef="let row"
                   class="call-to-detail-link"
                   (click)="callToDetail(row)"> {{row[column.ColumnDef]}} </md-cell>
       </ng-container>

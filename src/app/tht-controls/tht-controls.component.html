@@ -1,33 +1,35 @@
 <div class="controls-container" [ngSwitch]="true">
    <span class="tht-date-input" *ngSwitchCase="control.ControlType === 'DateTimeControl'">
     <md-form-field class="tht-input-container">
-        <input mdInput [mdDatepicker]="picker" placeholder="Choose a date" name="ModelName" [(ngModel)]="control.Value">
+        <input mdInput [mdDatepicker]="picker" placeholder="Choose a date" name="ModelName" required="control.RequiredLevel" [(ngModel)]="control.Value">
         <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
         <md-datepicker #picker></md-datepicker>
     </md-form-field>
   </span>
   <span class="tht-input-field" *ngSwitchCase="control.ControlType === 'InputFieldControl'">
     <md-form-field class="tht-input-container">
-      <md-icon class="suffix-icon" *ngIf="control.Suffix !== null" mdPrefix>{{control.Prefix}} &nbsp;</md-icon>
-      <input mdInput placeholder="{{control.Placeholder}}" type="text" name="ModelName" [(ngModel)]="control.Value">
+      <md-icon class="suffix-icon" *ngIf="control.Prefix !== null" mdPrefix>{{control.Prefix}} &nbsp;</md-icon>
+      <input mdInput placeholder="{{control.Placeholder}}" type="text" name="ModelName" required="control.RequiredLevel" [(ngModel)]="control.Value">
     </md-form-field>
   </span>
   <span class="tht-input-field" *ngSwitchCase="control.ControlType === 'NumberControl'">
     <md-form-field class="tht-input-container">
         <md-icon class="suffix-icon" mdPrefix>{{control?.Prefix}} &nbsp;</md-icon>
-      <input mdInput placeholder="{{control.DisplayName}}" type="number" name="ModelName" [(ngModel)]="control.Value">
+      <input mdInput placeholder="{{control.DisplayName}}" type="number" name="ModelName" required="control.RequiredLevel" [(ngModel)]="control.Value">
       <md-hint [align]="start">{{ control?.Hint }}</md-hint>
     </md-form-field>
   </span>
   <p class="tht-textarea" *ngSwitchCase="control.ControlType === 'TextAreaControl'">
       <md-form-field class="tht-input-container">
-        <textarea mdInput placeholder="{{control.DisplayName}}" name="ModelName" [(ngModel)]="control.Value"></textarea>
+        <textarea mdInput placeholder="{{control.DisplayName}}" name="ModelName" required="control.RequiredLevel" [(ngModel)]="control.Value"></textarea>
         <md-hint [align]="start">{{ control?.ToolTip }}</md-hint>
       </md-form-field>
     </p>
   <span class="tht-checkbox-control" *ngSwitchCase="control.ControlType === 'CheckBoxControl'">
-    <md-checkbox class="tht-checkbox-control" *ngFor="let option of control.Options" [labelPosition]="control.LabelPositions"> {{ option.value
+    <div class="check-box-container"  *ngFor="let option of control.Options" >
+    <md-checkbox class="tht-checkbox-control" [labelPosition]="control.LabelPositions" name="ModelName" required="control.RequiredLevel" [(ngModel)]="option.Value"> {{ option.value
        }} </md-checkbox>
+       </div>
   </span>
   <span class="tht-radio-button-control" *ngSwitchCase="control.ControlType === 'RadioButtonControl'">
     <div class="tht-radio-button-control-type">
@@ -69,10 +71,10 @@
     <!-- Ik werk zodra ik iets heb geplaatst van ChipControl material -->
     <md-form-field class="demo-chip-list tht-input-container">
         <md-chip-list mdPrefix #chipList>
-          <md-chip *ngFor= "let ingredient of ingredients"
+          <md-chip *ngFor= "let ingredient of control.Value"
                    [selectable]="selectable"
                    [removable]="removable" 
-                   (remove)="remove(ingredient)">
+                   (remove)="remove(ingredient)">{{ingredient.name}}
             <md-icon mdChipRemove *ngIf="removable">cancel</md-icon>
           </md-chip>
         </md-chip-list>

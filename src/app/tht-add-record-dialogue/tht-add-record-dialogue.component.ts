@@ -55,25 +55,29 @@ export class ThtAddRecordDialogueComponent implements OnInit, OnChanges {
 
     dialogRef.afterClosed().subscribe(result => {
       this.record = result;
-      this.recordCreated.emit({
-      //   // TODO Loop over multiple adds
-        recipe_name: this.record[0].recipe_name,
-        preperation: this.record[0].preperation,
-        date_created: this.record[0].timestamp,
-        ingredients: this.record[0].ingredients,
-        category: this.record[0].category,
-        costs_per_person: this.record[0].costs_per_person,
-        preparation_time: this.record[0].preparation_time
-      });
-      this.url = 'http://localhost:3000/recipes';
-      // this.errorService.handleOnError(this.record);
-      this.dataService.onCreate(this.record, this.url)
-        .subscribe(
-          (recipe: Recipe) => {
-            this.notificationService.handleOnSuccess(recipe);
-            this.recipeAdded.emit();
-          }
-        ) 
+      console.log(this.record);
+      if (this.record) {
+        this.recordCreated.emit({
+          //   // TODO Loop over multiple adds
+            recipe_name: this.record[0].recipe_name,
+            preperation: this.record[0].preperation,
+            date_created: this.record[0].timestamp,
+            ingredients: this.record[0].ingredients,
+            category: this.record[0].category,
+            costs_per_person: this.record[0].costs_per_person,
+            preparation_time: this.record[0].preparation_time
+          });
+
+          this.url = 'http://localhost:3000/recipes';
+          // this.errorService.handleOnError(this.record);
+          this.dataService.onCreate(this.record, this.url)
+            .subscribe(
+              (recipe: Recipe) => {
+                this.notificationService.handleOnSuccess(recipe);
+                this.recipeAdded.emit();
+              }
+            ) 
+      }
     });
   }
 }
@@ -105,24 +109,33 @@ export class DialogAddRecordDialog implements OnInit, OnChanges {
     
     function getChanges(controls, data) {
       for(let i = 0; i < controls.length; i++) {
+        if (controls[i].ModelName === 'category') {
+          const chosenCategory = [];
+          const optionsArray = controls[i].Options;
+          for (let i = 0; i < optionsArray.length; i++) {
+            if(optionsArray[i].Value) {
+              chosenCategory.push(optionsArray[i].value);
+            }
+          }
+          controls[i].Value = chosenCategory;
+        }
+
         if (controls[i].Value) {
           data.push(controls[i]);
         }
-        console.log(data);
       }
     }
     
     this.record.push({
       recipe_name: this.data[0].Value,
-      preperation: this.data[1].Value,
+      preperation: this.data[3].Value,
       date_created: this.timeStamp,
-      ingredients: this.ingredients,
-      preperation_time: this.data[2].Value,
-      costs_per_person: this.data[3].Value,
-      category: this.category
+      ingredients: this.data[2].Value,
+      preparation_time: this.data[4].Value,
+      costs_per_person: this.data[5].Value,
+      category: this.data[1].Value
     });
-
-    // clear form to allow for multiple adds per time
+    form.resetForm();
   }
 
   constructor(public dialogRef: MdDialogRef<DialogAddRecordDialog>, 
