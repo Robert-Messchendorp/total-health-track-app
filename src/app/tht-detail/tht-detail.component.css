@@ -19,6 +19,32 @@ md-list-item:nth-child(even) {
     display: -webkit-box;
 }
 
+.avatar-image {
+    background-image: url('./../../assets/images/example-avatar.svg');
+    background-size: cover;
+}
+
 .column {
     margin: 50px 25px 0 0;
+    display: block;
+}
+
+.example-fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+.card-recipe-date {
+    color: rgba(0,0,0,.54);
+}
+
+.card-header-left-column {
+    display: -webkit-box;
+}
+
+.detail-card-header {
+    background: rgba(103, 58, 183, .6)
+}
+
+.card-header-column {
+    margin: 2%;
 }

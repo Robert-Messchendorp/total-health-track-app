@@ -1,36 +1,47 @@
 <md-card>
-    <md-card-header>
-        <div md-card-avatar></div>
-        <md-card-title>
-            {{ recipe.recipe_name }}
-        </md-card-title>
-        <md-card-subtitle>
-            {{ recipe.user_name }}
-        </md-card-subtitle>
+    <md-card-header class="detail-card-header">
+        <div class="card-header-left-column card-header-column">
+            <div md-card-avatar class="avatar-image"></div>
+            <div class="card-header-titles">
+                <md-card-title>
+                    {{ recipe.recipe_name }}
+                </md-card-title>
+                <md-card-subtitle>
+                    {{ recipe.user_name }}
+                </md-card-subtitle>
+            </div>
+        </div>
+        <span class="example-fill-remaining-space"></span>
+        <div class="card-header-right-column card-header-column">
+            <p class="card-recipe-date">{{dateCreated}}</p>    
+        </div>
     </md-card-header>
     <md-card-content>
+
         <div class="ingredients-container">
             <h6>Ingredients</h6>
-                <div class="column" id="firstColumn" *ngFor="let ingredient of ingredients; let i = index">
-                    <div *ngIf="i < 4">
+                <div class="column" id="firstColumn" >
+                    <div *ngFor="let ingredient of firstColumn; let i = index">
                         <p>{{ingredient.name}}</p>
+                        <md-icon md-list-icon (click)="onAddItemToShoppingList(ingredient)" mdTooltip="Add to shoppinglist" mdTooltipPosition="after">add_circle_outline</md-icon>
                     </div>
                 </div>
-                <div class="column" id="secondColumn" *ngFor="let ingredient of ingredients; let i = index">
-                    <div *ngIf="7 < i > 3">
+                <div class="column" id="secondColumn" >
+                    <div *ngFor="let ingredient of secondColumn; let i = index">
                         <p>{{ingredient.name}}</p>
+                        <md-icon md-list-icon (click)="onAddItemToShoppingList(ingredient)" mdTooltip="Add to shoppinglist" mdTooltipPosition="after">add_circle_outline</md-icon>
                     </div>
                 </div>
-                <div class="column" id="thirdColumn" *ngFor="let ingredient of ingredients; let i = index">
-                    <div *ngIf="i > 7">
-                        <p>{{ingredients[8]?.name}}</p>
+                <div class="column" id="thirdColumn" >
+                    <div *ngFor="let ingredient of thirdColumn; let i = index">
+                        <p>{{ingredient.name}}</p>
+                        <md-icon md-list-icon (click)="onAddItemToShoppingList(ingredient)" mdTooltip="Add to shoppinglist" mdTooltipPosition="after">add_circle_outline</md-icon>
                     </div>
-                </div>
-                <div class="detail-text">
-                    {{selectedRecord.record.preparation}}
                 </div>
         </div>
-    
+        <div class="detail-text">
+            {{selectedRecord.record.preperation}}
+        </div>
     </md-card-content>
 </md-card>
 

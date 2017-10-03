@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule} from '@angular/router';
 import { NgSwitch } from '@angular/common';
+import { MomentModule } from 'angular2-moment';
 
 // Imports for Angular Material dependencies
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -122,7 +123,8 @@ export function init(config: StartupService) {
     MdNativeDateModule,
     MatChipsModule,
     ReactiveFormsModule,
-    MatTooltipModule
+    MatTooltipModule, 
+    MomentModule
   ],
   entryComponents: [
     ThtAddRecordDialogueComponent,

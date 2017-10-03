@@ -5,7 +5,7 @@ import { RecipeService } from '../../services/feature services/recipe.service';
 
 import { ShoppingListItem } from '../../models/shoppinglist.model';
 import { ShoppingListService } from '../../services/feature services/shopping-list.service';
-
+import * as moment from 'moment';
 @Component({
   selector: 'tht-detail',
   templateUrl: './tht-detail.component.html',
@@ -13,7 +13,11 @@ import { ShoppingListService } from '../../services/feature services/shopping-li
 })
 export class ThtDetailComponent implements OnInit, OnChanges {
   @Input() recipe: Recipe;
-  ingredients: ShoppingListItem[];
+  ingredients: ShoppingListItem[] = [ ];
+  firstColumn: ShoppingListItem[] = [ ];
+  secondColumn: ShoppingListItem[] = [ ];
+  thirdColumn: ShoppingListItem[]= [ ];
+  dateCreated: string;
   name: string;
   amount: string;
   selectedRecord;
@@ -38,11 +42,36 @@ export class ThtDetailComponent implements OnInit, OnChanges {
         .subscribe(
           (result: Recipe) => {
             this.selectedRecord = result;
-            console.log(this.selectedRecord);
-            this.ingredients = this.selectedRecord.record.ingredients;
-            console.log(this.ingredients);
+            this.ingredients = [ ];
+            this.createRecipeDetailCard(this.selectedRecord); 
           }
         )
     }
+  }
+
+  createRecipeDetailCard(selectedRecord) {
+    this.ingredients = selectedRecord.record.ingredients;
+    this.firstColumn = [];
+    this.secondColumn = [];
+    this.thirdColumn = [];
+
+    for (let i = 0; i < this.ingredients.length; i++) {
+      if ( i < 4) {
+        this.firstColumn.push(this.ingredients[i]);
+      }
+
+      if (i > 3 && i < 8) {
+        this.secondColumn.push(this.ingredients[i]);
+      }
+
+      if ( i > 8) {
+        this.thirdColumn.push(this.ingredients[i]);
+      }
+    }
+
+    console.log(this.firstColumn);
+    console.log(this.secondColumn);
+
+    this.dateCreated = moment(this.selectedRecord.record.date_created).format("DD/MM/YYYY");
   }
 }
