@@ -71,8 +71,8 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
   
     callToDetail(record: object) {
       this.record = record;
-      console.log(this.record);
-      this.recordSelected.emit(this.record);
+      // this.recordSelected.emit(this.record);
+      this.recipeService.entitySelected.emit(this.record);
       // when the detail component and data via service can be loaded you can search in the recipes with recipe name or maybe I can use 
       // the id of the record in a hidden column
     }

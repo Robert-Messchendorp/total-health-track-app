@@ -5,9 +5,7 @@ export class ShoppingListService {
   ingredientsChanged = new EventEmitter <ShoppingListItem[]>();
 
     private ingredients: ShoppingListItem[ ] = [
-        new ShoppingListItem('Tomatoes', '5'),
-        new ShoppingListItem('Fusili', '200 Grams'),
-        new ShoppingListItem('Pesto','2 Tbl')
+        
       ];
 
       getIngredients( ) {

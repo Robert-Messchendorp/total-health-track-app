@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Recipe } from '../../models/recipe.model';
 import { RecipeService } from '../../services/feature services/recipe.service';
@@ -11,7 +11,7 @@ import { ShoppingListService } from '../../services/feature services/shopping-li
   templateUrl: './tht-detail.component.html',
   styleUrls: ['./tht-detail.component.css'],
 })
-export class ThtDetailComponent implements OnInit {
+export class ThtDetailComponent implements OnInit, OnChanges {
   @Input() recipe: Recipe;
   ingredients: ShoppingListItem[];
   name: string;
@@ -22,21 +22,7 @@ export class ThtDetailComponent implements OnInit {
   
   ngOnInit() {
     // this.ingredients = this.shoppingListService.getIngredients();
-    this.recipeService.entitySelected
-    .subscribe(
-      (recipe: Recipe) => {
-        const url = "http://localhost:3000/recipes/" + this.recipe.recipe_Id;
-        this.recipeService.getRecipe(url)
-          .subscribe(
-            (result: Recipe) => {
-              this.selectedRecord = result;
-              this.ingredients = this.selectedRecord.record.ingredients;
-              console.log(this.ingredients);
-              console.log(this.selectedRecord);
-            }
-          )
-      }
-    );
+    console.log(this.recipe);
   }
 
   onAddItemToShoppingList(ingredient:any) {
@@ -45,6 +31,18 @@ export class ThtDetailComponent implements OnInit {
     this.shoppingListService.addIngredientsToShoppingList(ingredient);
   }
 
-  
-
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.recipe.currentValue) {
+      const url = "http://localhost:3000/recipes/" + this.recipe.recipe_Id;
+      this.recipeService.getRecipe(url)
+        .subscribe(
+          (result: Recipe) => {
+            this.selectedRecord = result;
+            console.log(this.selectedRecord);
+            this.ingredients = this.selectedRecord.record.ingredients;
+            console.log(this.ingredients);
+          }
+        )
+    }
+  }
 }

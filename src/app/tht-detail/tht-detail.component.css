@@ -5,3 +5,20 @@
 .detail-ingredient-list p, .detail-ingredient-list md-icon {
     display: inline-block;
 }
+
+md-list-item:nth-child(odd) {
+    max-width: 30%;
+}
+
+md-list-item:nth-child(even) {
+    float: right;
+    max-width: 30%;
+}
+
+.ingredients-container {
+    display: -webkit-box;
+}
+
+.column {
+    margin: 50px 25px 0 0;
+}
