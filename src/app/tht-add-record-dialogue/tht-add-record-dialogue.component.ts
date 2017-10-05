@@ -7,7 +7,8 @@ import {  Component,
           SimpleChanges,
           ElementRef,
           Input,
-          Inject } from '@angular/core';
+          Inject,
+          ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
           
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
@@ -24,7 +25,8 @@ import { Notification } from '../../models/notification.model';
 @Component({
   selector: 'tht-add-record-dialogue',
   templateUrl: './tht-add-record-dialogue.component.html',
-  styleUrls: ['./tht-add-record-dialogue.component.css']
+  styleUrls: ['./tht-add-record-dialogue.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class ThtAddRecordDialogueComponent implements OnInit, OnChanges {
   record;// { name:null, recipe_name:null, timeStamp: null}
@@ -86,6 +88,7 @@ export class ThtAddRecordDialogueComponent implements OnInit, OnChanges {
   selector: 'dialog-add-record-dialog',
   templateUrl: './tht-add-record-dialogue-templates/add-recipe-dialogue.html',
   styleUrls: ['./tht-add-record-dialogue.component.css'],
+  encapsulation: ViewEncapsulation.None,
   providers: [DataManagementService]
 })
 export class DialogAddRecordDialog implements OnInit, OnChanges {

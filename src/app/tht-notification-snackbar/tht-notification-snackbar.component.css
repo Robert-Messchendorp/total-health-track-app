@@ -19,6 +19,6 @@
     background: rgba(255, 0, 0, 0.68);
 }
 
-snack-bar-container {
+::ng-deep snack-bar-container {
     border-radius: 6px;
 }

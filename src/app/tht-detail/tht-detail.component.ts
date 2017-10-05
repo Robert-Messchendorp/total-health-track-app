@@ -6,6 +6,7 @@ import { RecipeService } from '../../services/feature services/recipe.service';
 import { ShoppingListItem } from '../../models/shoppinglist.model';
 import { ShoppingListService } from '../../services/feature services/shopping-list.service';
 import * as moment from 'moment';
+
 @Component({
   selector: 'tht-detail',
   templateUrl: './tht-detail.component.html',
@@ -46,7 +47,6 @@ export class ThtDetailComponent implements OnInit, OnChanges {
         .subscribe(
           (result: Recipe) => {
             this.selectedRecord = result;
-            console.log(this.selectedRecord);
             this.createRecipeDetailCard(this.selectedRecord); 
           }
         )

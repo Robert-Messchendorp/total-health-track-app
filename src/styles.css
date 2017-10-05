@@ -2,6 +2,10 @@
 /* Angular Material Theme */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+/* Fonts: Add record/Regular/Recipe Detail Card */
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Lobster+Two|Love+Ya+Like+A+Sister');
+
+
 #recipeForm .tht-input-container {
     width: 500px;
 }

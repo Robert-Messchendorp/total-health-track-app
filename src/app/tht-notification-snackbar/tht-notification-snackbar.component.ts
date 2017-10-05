@@ -41,7 +41,7 @@ export class ThtNotificationSnackbarComponent implements OnInit {
   openNotificationSnackBar(notification, component) {
     // implement here the call to open the snack bar
     this.snackBar.openFromComponent(component, {
-      duration: 5000,
+      duration: 500000,
       data: notification
     });
   }

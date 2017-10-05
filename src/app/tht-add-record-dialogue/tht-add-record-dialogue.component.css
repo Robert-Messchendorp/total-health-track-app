@@ -3,3 +3,11 @@
     float: right;
     margin-left: 85%;
 }
+
+::ng-deep .add-recipe-dialogue-container * {
+    font-family: 'Love Ya Like A Sister', cursive;
+}
+
+::ng-deep .material-icons {
+    font-family: 'Material Icons'
+}
