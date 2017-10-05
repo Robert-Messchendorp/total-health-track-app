@@ -20,13 +20,17 @@ export class ThtDetailComponent implements OnInit, OnChanges {
   dateCreated: string;
   name: string;
   amount: string;
+  preparation: string;
+  category: string | object;
+  preparation_time: number;
+  costs_per_person: number;
+  result;
   selectedRecord;
   constructor( private shoppingListService: ShoppingListService, private recipeService: RecipeService) { }
 
   
   ngOnInit() {
     // this.ingredients = this.shoppingListService.getIngredients();
-    console.log(this.recipe);
   }
 
   onAddItemToShoppingList(ingredient:any) {
@@ -42,7 +46,7 @@ export class ThtDetailComponent implements OnInit, OnChanges {
         .subscribe(
           (result: Recipe) => {
             this.selectedRecord = result;
-            this.ingredients = [ ];
+            console.log(this.selectedRecord);
             this.createRecipeDetailCard(this.selectedRecord); 
           }
         )
@@ -68,10 +72,10 @@ export class ThtDetailComponent implements OnInit, OnChanges {
         this.thirdColumn.push(this.ingredients[i]);
       }
     }
-
-    console.log(this.firstColumn);
-    console.log(this.secondColumn);
-
+    this.category = selectedRecord.record.category;
+    this.preparation = selectedRecord.record.preperation;
+    this.preparation_time = selectedRecord.record.preparation_time;
+    this.costs_per_person = selectedRecord.record.costs_per_person;
     this.dateCreated = moment(this.selectedRecord.record.date_created).format("DD/MM/YYYY");
   }
 }

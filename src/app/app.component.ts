@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   records: {name: string, recipe_name: string, timestamp: number} [] = [];
   fields;
   navigation;
+  recipe_entity: object;
   
   @Output() menuItemSelected = new EventEmitter<{menuItemSelected:string}>();
 
@@ -39,9 +40,20 @@ export class AppComponent implements OnInit {
 
   onChosenMenuItem(menuData: {chosenMenuItem:string}, sidenavElement) {
     this.entity = menuData.chosenMenuItem;
-    this.menuItemSelected.emit({
-      menuItemSelected: this.entity
-    });
+    let i;
+    // this.menuItemSelected.emit({
+    //   menuItemSelected: this.entity
+    // });
+    console.log(this.navigation);
+    for (i = 0; i < this.navigation.length; i++) {
+      if (this.entity === this.navigation[i].Entity && this.navigation[i].SubEntities) {
+        console.log(this.navigation[i].SubEntities);
+      }
+    }
+    // if (this.entity === this.navigation.Entity && this.navi)
+    // for (let object in this.navigation) {
+    //   console.log(object);
+    // }
     sidenavElement.close();
   }
 

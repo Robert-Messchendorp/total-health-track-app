@@ -23,7 +23,9 @@
                                 "Options": null,
                                 "Placeholder": "Please enter the name of your recipe",
                                 "ToolTip": null,
-                                "RequiredLevel": true
+                                "RequiredLevel": true,
+                                "Prefix": null,
+                                "Suffix": null
                             },
                             {
                                 "Id": "{b0441b89-b696-4a0c-943d-7294f3b04f3e}",
@@ -50,7 +52,9 @@
                                 ],
                                 "Placeholder": null,
                                 "ToolTip": "Check the categories that are applicable to your recipe",
-                                "RequiredLevel": false
+                                "RequiredLevel": false,
+                                "Prefix": null,
+                                "Suffix": null
                             },
                             {
                                 "Id": "{ebe5add3-263b-44c3-9ae2-702d3575efd6}",
@@ -63,7 +67,9 @@
                                 "RequiredLevel": false,
                                 "Visible": true,
                                 "ShowLabel": true,
-                                "Disabled": false
+                                "Disabled": false,
+                                "Prefix": null,
+                                "Suffix": null
                             },
                             {
                                 "Id": "{87f1c61d-11ac-4fcb-9e76-2a6e0dc33252}",
@@ -76,12 +82,14 @@
                                 "RequiredLevel": false,
                                 "Visible": true,
                                 "ShowLabel": true,
-                                "Disabled": false
+                                "Disabled": false,
+                                "Prefix": null,
+                                "Suffix": null
                             },
                             {
                                 "Id": "{7ded6f32-0bf7-4369-bf08-00d6f4a0a6c8}",
                                 "DisplayName": "Preperation time",
-                                "ModelName": "preperation_time",
+                                "ModelName": "preparation_time",
                                 "ControlType": "NumberControl",
                                 "Options": null,
                                 "Placeholder": null,
@@ -89,7 +97,9 @@
                                 "RequiredLevel": false,
                                 "Visible": true,
                                 "ShowLabel": true,
-                                "Disabled": false
+                                "Disabled": false,
+                                "Prefix": "timer",
+                                "Suffix": null
                             },
                             {
                                 "Id": "{317aa11d-b611-4eef-a2d9-f09c81ee03eb}",
@@ -102,10 +112,34 @@
                                 "RequiredLevel": false,
                                 "Visible": true,
                                 "ShowLabel": true,
-                                "Disabled": false
+                                "Disabled": false,
+                                "Prefix": "euro_symbol",
+                                "Suffix": null
                             }
                         ]
-                    } 
+                    },
+                    "DataTable": [
+                        {
+                            "ColumnDef": "recipe_name",
+                            "ColumnHeader": "Recipe"
+                        },
+                        {
+                            "ColumnDef": "user_name",
+                            "ColumnHeader": "User"
+                        },
+                        {
+                            "ColumnDef": "category",
+                            "ColumnHeader": "Category"
+                        },
+                        {
+                            "ColumnDef": "preparation_time",
+                            "ColumnHeader": "Preparation time"
+                        },
+                        {
+                            "ColumnDef": "costs_per_person",
+                            "ColumnHeader": "Costs P.P."
+                        }
+                    ]
                 },
                 {
                     "Id": "{5501b0c9-2e23-4387-a0b6-1a7502d35d60}",

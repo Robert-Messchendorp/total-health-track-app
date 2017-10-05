@@ -27,7 +27,8 @@ import {  MdButtonModule,
           MdSnackBarModule,
           MdNativeDateModule,
           MatChipsModule,
-          MatTooltipModule
+          MatTooltipModule,
+          MatMenuModule
          } from '@angular/material'; 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -95,7 +96,7 @@ export function init(config: StartupService) {
     ThtLogoutComponent,
     ThtNotificationSnackbarComponent,
     SnackBarErrorComponent,
-    SnackBarSuccessComponent
+    SnackBarSuccessComponent,
   ],
   imports: [
     BrowserModule,
@@ -124,7 +125,8 @@ export function init(config: StartupService) {
     MatChipsModule,
     ReactiveFormsModule,
     MatTooltipModule, 
-    MomentModule
+    MomentModule,
+    MatMenuModule
   ],
   entryComponents: [
     ThtAddRecordDialogueComponent,

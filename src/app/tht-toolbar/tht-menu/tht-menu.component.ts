@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
+import {NotificationService} from '../../../services/notification.service';
+import {Notification} from '../../../models/notification.model';
+
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -46,16 +50,23 @@ import { Router } from '@angular/router';
 
 export class ThtMenuComponent {
     menuChoice:string = '';
+    subEntities: boolean = true;
     @Output()  menuItemChosen = new EventEmitter<{chosenMenuItem:string}>();
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private notificationService: NotificationService) {}
     
     navigateTo(event:any) {
         this.menuChoice = event.target.textContent;
         this.menuItemChosen.emit({
             chosenMenuItem: this.menuChoice
         });
-        console.log(this.menuChoice);
-        this.router.navigate([this.menuChoice]);
+
+        // this.notificationService.applicationConfigNotification
+        // .subscribe(
+        //     (application: Notification) => {
+        //         console.log(application);
+        //     }
+        // )
+        // this.router.navigate([this.menuChoice]);
     }
 }

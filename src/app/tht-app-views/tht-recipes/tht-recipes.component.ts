@@ -50,7 +50,6 @@ export class ThtRecipesComponent implements OnInit, OnChanges {
       this.records = this.dataService.records;
       this.url = this.router.url;
       this.entity = this.url.substring(1);
-      
       this.recipeService.entitySelected
         .subscribe(
           (recipe: Recipe) => {

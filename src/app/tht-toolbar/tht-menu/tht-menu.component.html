@@ -42,14 +42,25 @@ class="menu-item-input-control"
     <div class="menu-header">
     </div>
     <md-nav-list class="menu-list">
-        <md-list-item class="tht-menu-list-item" (click)="navigateTo($event)">
+        <button md-menu-item class="tht-menu-list-item" (click)="navigateTo($event)">
             <md-icon md-list-icon>restaurant_menu</md-icon>
             <p class="menu-item-title">Food</p>
+                <!-- <md-list-item class="tht-submenu-list-item" *ngIf="subEntities"> -->
+                    
+                    
+            
+                <!-- </md-list-item> -->
+
             <!-- alternative ways -->
             <!-- <p class="menu-item-title"><a routerLink="/recipes">Food</a></p> -->
             <!-- after the slash is in case you go for recipes/singleid -->
             <!-- <p class="menu-item-title"><a [routerLink]="[/recipes]" / "['/recipes', 'someid' ]">Food</a></p> -->
-        </md-list-item>
+            </button>
+
+        <md-menu #food="mdMenu">
+            <p class="menu-item-title">Foodshufflr</p>
+            <p class="menu-item-title">recipes</p>
+        </md-menu>
         <md-list-item class="tht-menu-list-item" (click)="navigateTo($event)">
             <md-icon md-list-icon>euro_symbol</md-icon>
             <p class="menu-item-title">Finance</p>

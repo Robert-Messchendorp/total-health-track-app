@@ -16,7 +16,7 @@ const appRoutes: Routes = [
       path: 'recipes', component: ThtRecipesComponent
     },
     {
-      path: 'stocks-and-shares', component: ThtStocksAndSharesComponent
+      path: 'Finance', component: ThtStocksAndSharesComponent
     },
     {path: 'playground', component: ThtPlaygroundComponent}
     // {path: 'recipes/:id', component: ThtRecipesComponent}

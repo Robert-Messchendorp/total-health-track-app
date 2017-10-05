@@ -18,3 +18,7 @@
 .mat-snack-bar-container.ng-tns-c18-9.ng-trigger.ng-trigger-state.mat-snack-bar-center {
     background: rgba(255, 0, 0, 0.68);
 }
+
+snack-bar-container {
+    border-radius: 6px;
+}
