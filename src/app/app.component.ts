@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Recipe } from '../models/recipe.model';
 import { ApplicationFields } from '../models/application.model';
@@ -15,7 +15,7 @@ import { NotificationService } from '../services/notification.service';
   styleUrls: ['./app.component.css'],
   providers: [RecipeService]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
   selectedRecord: Recipe;  
   entity:string;
   records: {name: string, recipe_name: string, timestamp: number} [] = [];
@@ -76,6 +76,10 @@ export class AppComponent implements OnInit {
           this.notificationService.broadcastApplication(this.fields);
         }
       )
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
   }
 }
  

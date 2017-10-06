@@ -49,7 +49,6 @@ export class ThtAddRecordDialogueComponent implements OnInit, OnChanges {
     }
   }
 
-
   openDialog() {
     let dialogRef = this.dialog.open(DialogAddRecordDialog, {
       data:this.inputCardDefinition
@@ -57,7 +56,6 @@ export class ThtAddRecordDialogueComponent implements OnInit, OnChanges {
 
     dialogRef.afterClosed().subscribe(result => {
       this.record = result;
-      console.log(this.record);
       if (this.record) {
         this.recordCreated.emit({
           //   // TODO Loop over multiple adds
@@ -154,4 +152,25 @@ export class DialogAddRecordDialog implements OnInit, OnChanges {
     this.inputCardTitle = this.inputCardDefinition.CardTitle;
     this.inputCardSubTitle = this.inputCardDefinition.CardSubTitle;
   }
+}
+
+@Component({
+  selector: 'dialog-update-record-dialog',
+  templateUrl: './tht-add-record-dialogue-templates/update-recipe-dialogue.html',
+  styleUrls: ['./tht-add-record-dialogue.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [DataManagementService]
+})
+export class DialogUpdateRecordDialog implements OnInit, OnChanges {
+
+  constructor(){}
+
+  ngOnInit() {
+
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    
+  }
+
 }

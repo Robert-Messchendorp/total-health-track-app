@@ -1,0 +1,11 @@
+<div class="add-recipe-dialogue-container">
+    <h1 md-dialog-title>{{  updateCardTitle }}</h1>
+    <div md-dialog-content>
+        <form class="add-record-form" (ngSubmit)="onAddRecord(updateForm)" #updateForm="ngForm" id="recipeForm">
+            <tht-controls *ngFor="let control of controls" [control]="control"></tht-controls>
+            <button md-button md-raised-button color='accent' type='submit'>Update</button>
+        </form>
+        <br />
+        <button md-button (click)='dialogRef.close(record)'>Close and save</button>
+    </div>
+</div>

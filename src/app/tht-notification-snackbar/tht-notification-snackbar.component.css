@@ -1,9 +1,13 @@
 .error-title {
     color: rgba(255, 51, 0, 0.75);
+    font-size: 1em;
+    margin: 0;
 }
 
 .success-title {
     color: rgba(0, 128, 0, 0.95);
+    font-size: 1em;
+    margin: 0;
 }
 
 .error-message, .success-message {
@@ -19,6 +23,6 @@
     background: rgba(255, 0, 0, 0.68);
 }
 
-::ng-deep snack-bar-container {
+::ng-deep snack-bar-container.mat-snack-bar-container {
     border-radius: 6px;
 }

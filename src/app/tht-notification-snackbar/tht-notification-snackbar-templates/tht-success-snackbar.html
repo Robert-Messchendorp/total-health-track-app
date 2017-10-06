@@ -2,7 +2,7 @@
     <div class="success-notification">
         <h3 class="success-title">{{ success?.title }}</h3>
         <p class="success-message">{{ success?.message}}</p>
-        <button md-raised-button color='accent'>Update</button>
-        <button md-raised-button color='primary'>Close</button>
+        <button md-raised-button color='accent' (click)="onUpdate()">Update</button>
+        <button md-raised-button color='primary' (click)="onClose()">Close</button>
     </div>
 </div>

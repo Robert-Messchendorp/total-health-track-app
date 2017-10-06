@@ -133,7 +133,6 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
           (response: Response) => {
             this.result = response;
             this.records = this.result.record;
-            console.log(this.records);
             for (let i = 0; i < this.records.length; i++) { 
               // this.addUser(this.records); 
               this.recordId.push(this.records[i]._id);

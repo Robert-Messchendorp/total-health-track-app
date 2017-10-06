@@ -38,7 +38,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { AppComponent } from './app.component';
 import { ThtMenuComponent } from './tht-toolbar/tht-menu/tht-menu.component';
 import { ThtListComponent } from './tht-list/tht-list.component';
-import { ThtAddRecordDialogueComponent,DialogAddRecordDialog } from './tht-add-record-dialogue/tht-add-record-dialogue.component';
+import { ThtAddRecordDialogueComponent,DialogAddRecordDialog, DialogUpdateRecordDialog } from './tht-add-record-dialogue/tht-add-record-dialogue.component';
 import { ThtControlsComponent } from './tht-controls/tht-controls.component';
 import { ThtDetailComponent } from './tht-detail/tht-detail.component';
 import { ThtToolbarComponent } from './tht-toolbar/tht-toolbar.component';
@@ -82,6 +82,7 @@ export function init(config: StartupService) {
     ThtControlsComponent,
     ThtDetailComponent,
     DialogAddRecordDialog,
+    DialogUpdateRecordDialog,
     ThtToolbarComponent,
     ThtDataTableComponent,
     ThtGridListComponent,
@@ -132,7 +133,8 @@ export function init(config: StartupService) {
     ThtAddRecordDialogueComponent,
     DialogAddRecordDialog,
     SnackBarErrorComponent,
-    SnackBarSuccessComponent
+    SnackBarSuccessComponent,
+    DialogUpdateRecordDialog
   ],
   providers: [ShoppingListService, DataService, NotificationService,
   {

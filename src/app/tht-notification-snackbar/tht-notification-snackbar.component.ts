@@ -60,7 +60,7 @@ export class SnackBarErrorComponent {
     severity: String
   };
 
-  constructor(@Inject(MD_SNACK_BAR_DATA) public data: any) {
+  constructor(@Inject(MD_SNACK_BAR_DATA) public data: any, public snackbar:MdSnackBar) {
     this.error.type = data.type;
     this.error.title = data.title;
     this.error.message = data.message;
@@ -78,13 +78,28 @@ export class SnackBarSuccessComponent {
     type: String,
     title: String,
     message: String,
-    severity: String
+    severity: String,
+    record: Object
   };
 
-  constructor(@Inject(MD_SNACK_BAR_DATA) public data: any) {
+  constructor(@Inject(MD_SNACK_BAR_DATA) public data: any, public snackbar:MdSnackBar) {
     this.success.type = data.type;
     this.success.title = data.title;
     this.success.message = data.message;
     this.success.severity = data.severity;
+    this.success.record = data.record;
+  }
+
+  onClose() {
+    this.snackbar.dismiss()
+  }
+
+  onUpdate() {
+    console.log(this.success.record);
+    // implement a service or in the recipe service implement a method that emits an event
+    // listen in the add-record-dialogue for the event and create a new update template
+    // in the component for this updateRecordDialog implement a set values method that takes the
+    // this.success.record values and puts them in the dialogue
+    // button in the new template should not say add but update
   }
 }
