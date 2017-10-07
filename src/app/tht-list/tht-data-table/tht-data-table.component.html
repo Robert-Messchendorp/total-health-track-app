@@ -11,4 +11,12 @@
       <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
       <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
     </md-table>
+
+    <md-paginator
+        #paginator
+        [length]="exampleDatabase.data.length"
+        [pageIndex]="0"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 8, 10, 25]">
+    </md-paginator>
   </div>

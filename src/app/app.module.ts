@@ -28,7 +28,8 @@ import {  MdButtonModule,
           MdNativeDateModule,
           MatChipsModule,
           MatTooltipModule,
-          MatMenuModule
+          MatMenuModule,
+          MatPaginatorModule
          } from '@angular/material'; 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -60,6 +61,8 @@ import { ShoppingListService } from '../services/feature services/shopping-list.
 import { DataService } from '../services/data.service';
 import { StartupService} from '../services/startup.service';
 import { NotificationService } from '../services/notification.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { AutoLogoutService } from '../services/auto-logout.service';
 
 // Imports routing
 import { routing } from './app.routing';
@@ -127,7 +130,8 @@ export function init(config: StartupService) {
     ReactiveFormsModule,
     MatTooltipModule, 
     MomentModule,
-    MatMenuModule
+    MatMenuModule,
+    MatPaginatorModule
   ],
   entryComponents: [
     ThtAddRecordDialogueComponent,
@@ -136,7 +140,7 @@ export function init(config: StartupService) {
     SnackBarSuccessComponent,
     DialogUpdateRecordDialog
   ],
-  providers: [ShoppingListService, DataService, NotificationService,
+  providers: [ShoppingListService, DataService, NotificationService, AuthenticationService, AutoLogoutService,
   {
     'provide': APP_INITIALIZER,
     'useFactory': init,

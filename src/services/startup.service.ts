@@ -3,6 +3,8 @@ import { Http, Headers, Response} from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 
+import { AutoLogoutService } from './auto-logout.service';
+
 import { ApplicationFields } from '../models/application.model';
 
 @Injectable()
@@ -22,5 +24,10 @@ export class StartupService {
 
     getApplicationFieldsByApplicationComponent(entity: string, subEntity: string) {
 
+    }
+
+    initializeAutomaticLogoutService() {
+        // this.autoLogoutService.initListener();
+        // this.autoLogoutService.initInterval();
     }
 }

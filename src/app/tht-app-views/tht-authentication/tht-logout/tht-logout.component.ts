@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
+import { AuthenticationService } from '../../../../services/authentication.service'; 
 
 @Component({
   selector: 'tht-logout',
   templateUrl: './tht-logout.component.html',
-  styleUrls: ['./tht-logout.component.css']
+  styleUrls: ['./tht-logout.component.css'],
 })
 export class ThtLogoutComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
@@ -21,9 +22,8 @@ export class ThtLogoutComponent implements OnInit {
     }
   }
 
-  logout(){
-    localStorage.clear();
-    this.router.navigateByUrl('/');
+  onLogout(){
+    this.authenticationService.logout();
   }
 
 }
