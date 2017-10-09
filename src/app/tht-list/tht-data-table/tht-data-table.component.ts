@@ -1,10 +1,11 @@
-import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges, EventEmitter, Output, Input, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges, EventEmitter, Output, Input, AfterViewChecked, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 // Data table specific imports
-import {DataSource} from '@angular/cdk/table';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
+import { DataSource } from '@angular/cdk/table';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { MatPaginator } from '@angular/material';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
@@ -37,8 +38,10 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
     success: Notification;
     url: string;
     currentTable: Object;
+    selectedRecord: boolean;
     @Input('tableDefinition') tableDefinition: Object;
     @Output() recordSelected = new EventEmitter<{}>();
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor (private recipeService: RecipeService, 
                 private dataService: DataService, 
@@ -53,7 +56,7 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
       })
       this.exampleDatabase = new ExampleDatabase(this.dataService, this.notificationService);
     
-      this.dataSource = new ExampleDataSource(this.exampleDatabase);
+      this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator);
 
     }
 
@@ -75,6 +78,13 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
       this.recipeService.entitySelected.emit(this.record);
       // when the detail component and data via service can be loaded you can search in the recipes with recipe name or maybe I can use 
       // the id of the record in a hidden column
+      this.selectedRecord = true;
+      // dataTable[0].style.width = "350px";
+      // dataTable[0].classList.push('record-selected');
+      
+      
+      
+
     }
 
     defineTable(tableDefinition) {
@@ -195,13 +205,29 @@ export class ThtDataTableComponent implements OnInit, AfterViewInit, OnChanges {
    * should be rendered.
    */
   export class ExampleDataSource extends DataSource<any> {
-    constructor(private _exampleDatabase: ExampleDatabase) {
+    constructor(private _exampleDatabase: ExampleDatabase, private _paginator: MatPaginator) {
       super();
     }
   
     /** Connect function called by the table to retrieve one stream containing the data to render. */
+    // connect(): Observable<UserData[]> {
+    //   return this._exampleDatabase.dataChange;
+    // }
+  
+    // disconnect() {}
     connect(): Observable<UserData[]> {
-      return this._exampleDatabase.dataChange;
+      const displayDataChanges = [
+        this._exampleDatabase.dataChange,
+        this._paginator.page,
+      ];
+  
+      return Observable.merge(...displayDataChanges).map(() => {
+        const data = this._exampleDatabase.data.slice();
+  
+        // Grab the page's slice of data.
+        const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
+        return data.splice(startIndex, this._paginator.pageSize);
+      });
     }
   
     disconnect() {}

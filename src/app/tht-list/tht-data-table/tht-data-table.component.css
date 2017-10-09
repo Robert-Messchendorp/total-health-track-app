@@ -27,3 +27,7 @@
   .call-to-detail-link {
       cursor: pointer;
   }
+
+  .record-selected {
+    transform: translateX(-550px);
+  }

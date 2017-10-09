@@ -1,4 +1,4 @@
-<div class="example-container mat-elevation-z8">
+<div class="example-container mat-elevation-z8" [ngClass]="selectedRecord ? 'record-selected' : ''">
     <md-table #table [dataSource]="dataSource">
   
       <ng-container [cdkColumnDef]="column.ColumnDef" *ngFor="let column of columns">
