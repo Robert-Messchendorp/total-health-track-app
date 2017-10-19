@@ -34,6 +34,9 @@ import {  MdButtonModule,
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CdkTableModule } from '@angular/cdk/table';
 
+// Imports for ng2-charts
+import { ChartsModule } from 'ng2-charts';
+
           
 // Imports of Components of the App
 import { AppComponent } from './app.component';
@@ -63,6 +66,7 @@ import { StartupService} from '../services/startup.service';
 import { NotificationService } from '../services/notification.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { AutoLogoutService } from '../services/auto-logout.service';
+import { AuthGuardService } from '../services/authGuard.service';
 
 // Imports routing
 import { routing } from './app.routing';
@@ -131,7 +135,8 @@ export function init(config: StartupService) {
     MatTooltipModule, 
     MomentModule,
     MatMenuModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ChartsModule
   ],
   entryComponents: [
     ThtAddRecordDialogueComponent,
@@ -140,7 +145,13 @@ export function init(config: StartupService) {
     SnackBarSuccessComponent,
     DialogUpdateRecordDialog
   ],
-  providers: [ShoppingListService, DataService, NotificationService, AuthenticationService, AutoLogoutService,
+  providers: [
+    ShoppingListService,
+    DataService,
+    NotificationService,
+    AuthenticationService,
+    AutoLogoutService,
+    AuthGuardService,
   {
     'provide': APP_INITIALIZER,
     'useFactory': init,

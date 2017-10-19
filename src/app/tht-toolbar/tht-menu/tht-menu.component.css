@@ -26,3 +26,7 @@
     height: 64px;
     background: rgb(38, 13, 173);
 }
+
+.tht-menu-list-item > div {
+    display: inline-block;
+}

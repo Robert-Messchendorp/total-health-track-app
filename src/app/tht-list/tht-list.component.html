@@ -52,7 +52,7 @@
 </div> -->
 
 <!-- Final list view is datatable or grid -list (user pick) -->
-<div class="list-view-container">
+<div class="list-view-container" [ngClass]="recordSelected ? 'record-selected' : ''">
   <span class="list-view-button-container">
     <button md-button>
       <md-icon>view_list</md-icon>
@@ -63,5 +63,6 @@
       <md-icon>dashboard</md-icon>
     </button>
   </span>
-  <tht-data-table (recordSelected) = "onRecordSelected($event)" [tableDefinition]="tableDefinition"></tht-data-table>
+  <tht-data-table [tableDefinition]="tableDefinition"></tht-data-table>
+  <!-- (recordSelected) = "onRecordSelected($event)" -->
 </div>

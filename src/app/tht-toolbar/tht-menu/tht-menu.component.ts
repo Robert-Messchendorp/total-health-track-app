@@ -51,9 +51,12 @@ import { Router } from '@angular/router';
 export class ThtMenuComponent {
     menuChoice:string = '';
     subEntities: boolean = true;
+    navigationItems;
     @Output()  menuItemChosen = new EventEmitter<{chosenMenuItem:string}>();
 
-    constructor(private router: Router, private notificationService: NotificationService) {}
+    constructor(private router: Router, private notificationService: NotificationService) {
+        this.getMenuItems();
+    }
     
     navigateTo(event:any) {
         this.menuChoice = event.target.textContent;
@@ -68,5 +71,15 @@ export class ThtMenuComponent {
         //     }
         // )
         // this.router.navigate([this.menuChoice]);
+    }
+
+    getMenuItems() {
+        this.notificationService.applicationConfigNotification
+            .subscribe(
+                (application: Notification) => {
+                    this.navigationItems = application.record[0].Navigation;
+                    console.log(this.navigationItems);
+                }
+            )    
     }
 }

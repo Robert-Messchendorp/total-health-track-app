@@ -7,16 +7,18 @@ import { ThtPlaygroundComponent } from './tht-app-views/tht-playground/tht-playg
 
 import { authentication_routes } from './tht-app-views/tht-authentication/tht-authentication.routes';
 
+import { AuthGuardService } from '../services/authGuard.service';
+
 // Routing
 const appRoutes: Routes = [
     {
       path: '', component: ThtAuthenticationComponent, pathMatch: 'full'
     },
     {
-      path: 'recipes', component: ThtRecipesComponent
+      path: 'recipes', component: ThtRecipesComponent, canActivate: [AuthGuardService]
     },
     {
-      path: 'Finance', component: ThtStocksAndSharesComponent
+      path: 'Finance', component: ThtStocksAndSharesComponent, canActivate: [AuthGuardService]
     },
     {path: 'playground', component: ThtPlaygroundComponent}
     // {path: 'recipes/:id', component: ThtRecipesComponent}

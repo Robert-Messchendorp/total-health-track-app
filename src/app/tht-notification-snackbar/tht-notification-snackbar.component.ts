@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
 import { MdSnackBar, MD_SNACK_BAR_DATA } from '@angular/material';
 
 import { Notification } from '../../models/notification.model'; 
@@ -66,6 +66,14 @@ export class SnackBarErrorComponent {
     this.error.message = data.message;
     this.error.severity = data.severity;
   }
+
+  onRegister() {
+    //send event to change the selectedIndex
+  }
+
+  onRetry() {
+    this.snackbar.dismiss();
+  }
 }
 
 @Component({
@@ -91,7 +99,7 @@ export class SnackBarSuccessComponent {
   }
 
   onClose() {
-    this.snackbar.dismiss()
+    this.snackbar.dismiss();
   }
 
   onUpdate() {

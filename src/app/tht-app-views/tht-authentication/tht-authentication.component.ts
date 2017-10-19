@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'tht-authentication',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tht-authentication.component.css']
 })
 export class ThtAuthenticationComponent implements OnInit {
-
+  selectedIndex;
   constructor() { }
 
   ngOnInit() {
+    this.selectedIndex = 1;
   }
+
 
 }

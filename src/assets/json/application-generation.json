@@ -4,12 +4,13 @@
             "Id": "{43f28032-ca95-4bd4-934c-bc3416ce174d}",
             "DisplayName": "Food",
             "Entity": "Food",
-            "Icon": "",
+            "Icon": "restaurant",
             "SubEntities": [
                 {
                     "Id": "{51706c68-3385-4fd9-a069-986f8c7ebf05}",
                     "DisplayName": "Recipes",
                     "Router": "/recipes",
+                    "Icon": "restaurant_menu",
                     "InputCard": {
                         "Id": "{c87600e6-21d7-4ff4-8fc3-7e205732d5fb}",
                         "CardTitle": "Add your recipe",
@@ -48,6 +49,22 @@
                                     {
                                         "key": 4,
                                         "value": "Salad lovers"
+                                    },
+                                    {
+                                        "key": 5,
+                                        "value": "Fusion"
+                                    },
+                                    {
+                                        "key": 6,
+                                        "value": "Desert Kings"
+                                    },
+                                    {
+                                        "key": 7,
+                                        "value": "Fishy Fishy"
+                                    },
+                                    {
+                                        "key": 8,
+                                        "value": "Specials"
                                     }
                                 ],
                                 "Placeholder": null,
@@ -99,7 +116,8 @@
                                 "ShowLabel": true,
                                 "Disabled": false,
                                 "Prefix": "timer",
-                                "Suffix": null
+                                "Suffix": null,
+                                "Hint": "[HH.MM]"
                             },
                             {
                                 "Id": "{317aa11d-b611-4eef-a2d9-f09c81ee03eb}",
@@ -119,6 +137,10 @@
                         ]
                     },
                     "DataTable": [
+                        {
+                            "ColumnDef": "recipe_Id",
+                            "ColumnHeader": "Id"
+                        },
                         {
                             "ColumnDef": "recipe_name",
                             "ColumnHeader": "Recipe"
@@ -144,7 +166,8 @@
                 {
                     "Id": "{5501b0c9-2e23-4387-a0b6-1a7502d35d60}",
                     "DisplayName": "Foodshufflr",
-                    "Router": "/foodshufflr"
+                    "Router": "/foodshufflr",
+                    "Icon": "shuffle"
                 }
             ]
         },
@@ -153,13 +176,13 @@
             "DisplayName": "Finance",
             "Entity": "Finance",
             "Router": "/finance-dashboard",
-            "Icon": "",
+            "Icon": "euro_symbol",
             "SubEntities": [
                 {
                     "Id": "{305b67c6-9e95-49a3-b81c-e27c180fbedd}",
                     "DisplayName": "Investments",
                     "Router": "/investments",
-                    "Icon": "",
+                    "Icon": "trending_up",
                     "SubEntityNavigation": [
                         {
                             "Id": "{a78ad1a3-0452-430b-a190-46fe31868fc5}",
@@ -197,19 +220,19 @@
                     "Id": "{bd6bceb1-450a-4832-bb18-65fc5f09fd7a}",
                     "DisplayName": "Fixed Costs",
                     "Router": "/fixed-costs",
-                    "Icon": ""
+                    "Icon": "today"
                 },
                 {
                     "Id": "{db3b02d4-2b4e-419a-a913-89f991509f13}",
                     "DisplayName": "Invoices",
                     "Router": "/invoices",
-                    "Icon": ""
+                    "Icon": "payment"
                 },
                 {
                     "Id": "{8c4a9f54-ccf9-4360-8798-ad2b6bf08aa4}",
                     "DisplayName": "Receipts",
                     "Router": "/receipts",
-                    "Icon": ""
+                    "Icon": "receipt"
                 }
             ]
         },
@@ -217,7 +240,7 @@
             "Id": "{201eb8dc-1323-4837-bb37-4a8f8e80f008}",
             "DisplayName": "Body",
             "Entity": null,
-            "Icon": "",
+            "Icon": "accessibility",
             "SubEntities": [
                 {
                     "Id": "{71424bf1-58b5-4aa8-a65b-a2b569019e27}",

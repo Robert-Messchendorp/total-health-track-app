@@ -42,25 +42,19 @@ class="menu-item-input-control"
     <div class="menu-header">
     </div>
     <md-nav-list class="menu-list">
-        <button md-menu-item class="tht-menu-list-item" (click)="navigateTo($event)">
+        <!-- <md-list-item class="tht-menu-list-item">
             <md-icon md-list-icon>restaurant_menu</md-icon>
             <p class="menu-item-title">Food</p>
-                <!-- <md-list-item class="tht-submenu-list-item" *ngIf="subEntities"> -->
-                    
-                    
-            
-                <!-- </md-list-item> -->
-
+                <br/>
+                <div class="tht-submenu-list-item" *ngIf="subEntities"> 
+                    <p class="menu-item-title" (click)="navigateTo($event)">Foodshufflr</p>
+                    <p class="menu-item-title" (click)="navigateTo($event)">recipes</p>
+                </div> -->
             <!-- alternative ways -->
             <!-- <p class="menu-item-title"><a routerLink="/recipes">Food</a></p> -->
             <!-- after the slash is in case you go for recipes/singleid -->
             <!-- <p class="menu-item-title"><a [routerLink]="[/recipes]" / "['/recipes', 'someid' ]">Food</a></p> -->
-            </button>
-
-        <md-menu #food="mdMenu">
-            <p class="menu-item-title">Foodshufflr</p>
-            <p class="menu-item-title">recipes</p>
-        </md-menu>
+        <!-- </md-list-item>
         <md-list-item class="tht-menu-list-item" (click)="navigateTo($event)">
             <md-icon md-list-icon>euro_symbol</md-icon>
             <p class="menu-item-title">Finance</p>
@@ -72,6 +66,10 @@ class="menu-item-input-control"
         <md-list-item class="tht-menu-list-item" (click)="navigateTo($event)">
             <md-icon md-list-icon>euro_symbol</md-icon>
             <p class="menu-item-title">playground</p>
+        </md-list-item> -->
+        <md-list-item class="tht-menu-list-item" *ngFor="let menuItem of navigationItems">
+            <md-icon md-list-icon>{{ menuItem.Icon }}</md-icon>
+            <h4>{{ menuItem.DisplayName }}</h4>
         </md-list-item>
     </md-nav-list>
 </div>

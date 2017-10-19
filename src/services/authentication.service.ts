@@ -31,5 +31,12 @@ timeLoggedIn:number;
         localStorage.clear();
         this.router.navigateByUrl('/');
     }
+
+    isAuthenticated() {
+        if (localStorage.getItem('token') !== null &&
+            localStorage.getItem('userid') !== null) {
+                return true;
+        }
+    }
     
 }

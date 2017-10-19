@@ -5,3 +5,7 @@
 .list-view-container {
     margin: 30px 5px;
 }
+
+.record-selected {
+    transform: translateX(-750px);
+}

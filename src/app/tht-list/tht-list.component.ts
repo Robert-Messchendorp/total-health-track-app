@@ -40,6 +40,8 @@ export class ThtListComponent implements OnInit, OnChanges {
   selectedRecord;
   @Input('tableDefinition') tableToPassOn;
   tableDefinition;
+  recordSelected: boolean;
+  
 
   
   constructor( private recipeService:RecipeService) { }
@@ -56,10 +58,11 @@ export class ThtListComponent implements OnInit, OnChanges {
   //   this.recipeService.entitySelected.emit(this.record);
   // }
 
-  onRecordSelected(recordData: object) {
-    this.selectedRecord = recordData;
-    this.recipeService.entitySelected.emit(this.selectedRecord);
-  } 
+  // onRecordSelected(recordData: object) {
+  //   this.selectedRecord = recordData;
+  //   console.log(this.selectedRecord);
+  //   this.recipeService.entitySelected.emit(this.selectedRecord);
+  // } 
 
 }
 
